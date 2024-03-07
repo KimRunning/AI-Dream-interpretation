@@ -7,46 +7,49 @@ interface Estrela {
   opacity: string;
   tam: string;
   delay: number;
-  left: number;
-  top: number;
+  left: string; // 퍼센트 단위로 변경
+  top: string; // 퍼센트 단위로 변경
 }
 
 interface Meteoro {
   style: string;
-  left: number;
+  left: string; // 퍼센트 단위로 변경
 }
 
-// 컴포넌트 이름은 대문자로 시작해야 합니다.
 function Stars() {
   const [estrelas, setEstrelas] = useState<Estrela[]>([]);
   const [meteoro, setMeteoro] = useState<Meteoro[]>([]);
+
+  // 별의 위치를 계산하는 함수
+  const createEstrelas = () => {
+    const style = ["style1", "style2", "style3", "style4"];
+    const tam = ["tam1", "tam1", "tam1", "tam2", "tam3"];
+    const opacity = ["opacity1", "opacity1", "opacity1", "opacity2", "opacity2", "opacity3"];
+    const qtdeEstrelas = 250;
+    const newEstrelas = [];
+
+    for (let i = 0; i < qtdeEstrelas; i++) {
+      newEstrelas.push({
+        style: style[Math.floor(Math.random() * 4)],
+        opacity: opacity[Math.floor(Math.random() * 6)],
+        tam: tam[Math.floor(Math.random() * 5)],
+        delay: Math.random(),
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+      });
+    }
+
+    setEstrelas(newEstrelas);
+  };
+
   useEffect(() => {
-    // 별 생성 로직
-    const createEstrelas = () => {
-      const style = ["style1", "style2", "style3", "style4"];
-      const tam = ["tam1", "tam1", "tam1", "tam2", "tam3"];
-      const opacity = ["opacity1", "opacity1", "opacity1", "opacity2", "opacity2", "opacity3"];
-      const qtdeEstrelas = 250;
-      const newEstrelas = [];
+    createEstrelas();
 
-      for (let i = 0; i < qtdeEstrelas; i++) {
-        newEstrelas.push({
-          style: style[Math.floor(Math.random() * 4)],
-          opacity: opacity[Math.floor(Math.random() * 6)],
-          tam: tam[Math.floor(Math.random() * 5)],
-          delay: Math.random(),
-          left: Math.floor(Math.random() * window.innerWidth),
-          top: Math.floor(Math.random() * window.innerHeight),
-        });
-      }
-
-      setEstrelas(newEstrelas);
-    };
-    // 유성 생성 로직
+    // 유성 생성 로직 (유지)
     const carregarMeteoro = () => {
       const newMeteoro = {
         style: "style" + (Math.floor(Math.random() * 4) + 1),
-        left: Math.floor(Math.random() * window.innerWidth),
+        left: `${Math.random() * 100}%`,
       };
 
       setMeteoro(oldMeteoro => [...oldMeteoro, newMeteoro]);
@@ -55,8 +58,6 @@ function Stars() {
         setMeteoro(oldMeteoro => oldMeteoro.slice(1));
       }, 1000);
     };
-
-    createEstrelas();
 
     const intervalId = setInterval(carregarMeteoro, 5000 + Math.random() * 5000);
 
@@ -71,8 +72,8 @@ function Stars() {
           className={`estrela ${estrela.style} ${estrela.opacity} ${estrela.tam}`}
           style={{
             animationDelay: `${estrela.delay}s`,
-            left: `${estrela.left}px`,
-            top: `${estrela.top}px`,
+            left: estrela.left,
+            top: estrela.top,
             position: "absolute",
           }}
         ></span>
@@ -82,7 +83,7 @@ function Stars() {
           key={index}
           className={`meteoro ${meteoro.style}`}
           style={{
-            left: `${meteoro.left}px`,
+            left: meteoro.left,
             position: "absolute",
           }}
         ></div>
