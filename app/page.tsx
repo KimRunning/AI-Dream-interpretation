@@ -24,7 +24,7 @@ export default function Chat() {
           </span>
         </section>
         <section className="bg-black-500 w-[40%] h-[400px] mx-auto items-center flex flex-col justify-center">
-          <span className="w-[450px] text-[20px] text-[#CBD0D9] font-semibold">당신이 꾼 꿈을 AI가 분석해드려요!</span>
+          <span className="w-[450px] text-[20px] text-[#CBD0D9] font-semibold">당신의 꿈을 해몽 전문 AI가 분석해드려요!</span>
           <form className="m-1 w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
             <textarea
               className="w-[450px] h-[220px] bg-white bg-opacity-90"
