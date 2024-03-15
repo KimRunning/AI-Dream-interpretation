@@ -23,11 +23,11 @@ export default function Chat() {
             &nbsp; 무<span className="text-[20px] sm:text-[30px]">의식</span>
           </span>
         </section>
-        <section className="w-[100%] h-[400px] mx-auto items-center flex flex-col justify-center">
+        <section className="w-[100%] h-[45vh] mx-auto items-center flex flex-col justify-center">
           <form className="w-[80%] m-1 sm:w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
             <span className="mb-1 w-[80%] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
             <textarea
-              className="text-gray-500 font-bold w-[80%] h-[200px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
+              className="text-gray-500 font-bold w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
               value={input}
               placeholder="당신이 꾼 꿈을 적어주세요!"
               onChange={handleInputChange}
@@ -37,7 +37,7 @@ export default function Chat() {
             </button>
           </form>
         </section>
-        <section className="bg-purple flex flex-col w-full max-w-md h-[5px] py-24 mx-auto stretch">
+        <section className="bg-purple flex flex-col w-full h-[5px]  mx-auto stretch">
           {messages.map(m => (
             <div key={m.id} className="whitespace-pre-wrap">
               {m.role === "user" ? "User: " : "AI: "}

@@ -14,16 +14,16 @@ export default function Header() {
           </p>
         </div>
         <div className="w-[68vw]  flex sm:hidden flex-row items-end justify-between pr-5 pb-[15px]">
-          <span className=" text-[16px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">해몽하기</span>
-          <span className=" text-[16px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">꿈 게시판</span>
-          <span className="text-[16px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">MY</span>
-          <span className=" text-[16px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">문의</span>
+          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">해몽하기</span>
+          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">꿈 게시판</span>
+          <span className="text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">MY</span>
+          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">문의</span>
         </div>
         <div className="hidden sm:flex sm:w-[400px]  flex-row justify-between items-end pr-2  lg:pr-10 pb-[6px] lg:w-[40vw] ">
-          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">꿈 해몽하기</span>
-          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">다른 사람 꿈 보기</span>
-          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">내 꿈 보기</span>
-          <span className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">제작자 / 문의</span>
+          <span className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">꿈 해몽하기</span>
+          <span className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">다른 사람 꿈 보기</span>
+          <span className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">내 꿈 보기</span>
+          <span className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">제작자 / 문의</span>
         </div>
       </section>
     </>

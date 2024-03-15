@@ -1,5 +1,16 @@
 import React from "react";
 
-export default function listCard() {
-  return <div>listCard</div>;
+export default function ListCard() {
+  return (
+    <>
+      <main className="flex flex-row w-[350px] h-[150px] bg-white rounded-md bg-gradient-to-b from-[#BE87F5] to-[#E5DDEC] border-2 border-white">
+        <section className="flex items-center justify-center w-[120px] h-[100%] text-[25px] border-r-2 border-white">레전드...</section>
+        <section className="flex w-[230px] h-[100%] justify-center ">
+          <div className="flex justify-center items-center w-[220px] h-[100%] text-[18px]">
+            We love Landingfolio! Our beautiful flower... We love Landingfolio! Our beautiful flower...
+          </div>
+        </section>
+      </main>
+    </>
+  );
 }
