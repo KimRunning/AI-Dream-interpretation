@@ -7,8 +7,8 @@ export default function Header() {
         <div className="w-[170px] lg:w-[50vw] ">
           <p className="text-[40px] flex flex-row font-bold text-transparent bg-gradient-to-r bg-clip-text from-pink via-lightBlue to-lightGreen ">
             해몽AI
-            <span className="hidden lg:inline">
-              &nbsp;- 꿈<span className="2xl:text-[30px] lg:text-[24px]">을 통해 </span> 알<span className="2xl:text-[30px] lg:text-[24px]">아보는</span> 무
+            <span className=" text-transparent bg-gradient-to-r bg-clip-text from-pink via-lightBlue to-lightGreen hidden lg:inline">
+              &nbsp;- 꿈<span className=" 2xl:text-[30px] lg:text-[24px]">을 통해 </span> 알<span className="2xl:text-[30px] lg:text-[24px]">아보는</span> 무
               <span className="2xl:text-[30px] lg:text-[24px]">의식</span>
             </span>
           </p>
