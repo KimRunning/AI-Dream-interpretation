@@ -1,13 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 export default function ListCard() {
+  const fullText = `만약 여러 줄의 텍스트에 대해 처리를 하고 싶다면, 이는 CSS만으로 해결할 수 있는 부분이 아닙니다. JavaScript를 사용하여 텍스트 길이를 제한하고, 넘치는 부분을 로 대체하는 로직을 구현해야 합니다. 예를 들어, React 컴포넌트에서 텍스트를 처리하고 조건에 따라를 추가하는 방법을 고려할 수 있습니다.`;
+
+  const [maxChars, setMaxChars] = useState(20);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 여기서 "sm" 사이즈를 640px로 가정합니다. 프로젝트의 실제 breakpoint에 맞게 조정하세요.
+      setMaxChars(window.innerWidth >= 640 ? 53 : 20);
+    };
+
+    // 컴포넌트 마운트 시 뷰포트 너비 체크
+    handleResize();
+
+    // 뷰포트 너비 변경 시 업데이트
+    window.addEventListener("resize", handleResize);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const displayText = fullText.length > maxChars ? `${fullText.substring(0, maxChars)}...` : fullText;
   return (
     <>
-      <main className="flex flex-row w-[340px] h-[150px] bg-white rounded-md bg-gradient-to-b from-[#BE87F5] to-[#E5DDEC] border-2 border-white">
-        <section className="flex items-center justify-center w-[110px] h-[100%] text-[22px] border-r-2 font-bold border-white">레전드다..</section>
-        <section className="flex w-[230px] h-[100%] justify-center ">
-          <div className="flex justify-center items-center w-[220px] h-[100%] text-[18px]">
-            We love Landingfolio! Our beautiful flower... We love Landingfolio! Our beautiful flower...
+      <main className="flex flex-col w-[360px] h-[55px] items-center sm:w-[340px] sm:h-[150px]  rounded-md bg-[#BD8FEC] sm:bg-gradient-to-b from-[#BE87F5] to-[#E5DDEC] border-b-[1px] border-black border-opacity-50 sm:border-2 sm:border-white">
+        <section className="flex items-center justify-between w-[95%]  h-[25%]">
+          <span className="text-start w-50% h-[80%] text-[16px] text-white sm:text-[18px]">레전드오리진</span>
+          <span className="text-end w-45% h-[80%] h-[100%] text-[16px]  sm:text-[18px] text-white ">1개월 전</span>
+        </section>
+        <section className="flex text-center font-bold sm:text-left w-[100%] h-[75%] sm:w-[90%] sm:h-[75%] justify-center ">
+          <div className="flex justify-center text-[16px] items-center w-[90%] h-[100%] sm:text-[20px] sm:w-[95%] sm:h-[100%] sm:whitespace-normal whitespace-nowrap">
+            {displayText}
           </div>
         </section>
       </main>
