@@ -9,7 +9,7 @@ export default function ListCard() {
   useEffect(() => {
     const handleResize = () => {
       // 여기서 "sm" 사이즈를 640px로 가정합니다. 프로젝트의 실제 breakpoint에 맞게 조정하세요.
-      setMaxChars(window.innerWidth >= 640 ? 53 : 20);
+      setMaxChars(window.innerWidth >= 640 ? 36 : 20);
     };
 
     // 컴포넌트 마운트 시 뷰포트 너비 체크

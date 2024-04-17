@@ -41,7 +41,7 @@ export default function Header() {
           <Link href={"/myDreams"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             내 꿈 보기
           </Link>
-          <Link href={"/"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
+          <Link href={"/inquire"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             제작자 / 문의
           </Link>
         </div>
