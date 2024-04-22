@@ -4,7 +4,7 @@ import React from "react";
 export default function Header() {
   return (
     <>
-      <section className="bg-black h-[7vh] flex flex-row pl-1 lg:items-end w-[100%] justify-between ">
+      <section className="bg-black h-[6vh] flex flex-row pl-1 lg:items-end w-[100%] justify-between ">
         <div className="w-[170px] lg:w-[50vw] ">
           <Link
             href={"/"}

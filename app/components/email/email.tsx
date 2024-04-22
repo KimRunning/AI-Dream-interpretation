@@ -2,6 +2,7 @@
 import { useState, FormEvent } from "react";
 
 const HomePage: React.FC = () => {
+  // const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
@@ -16,7 +17,8 @@ const HomePage: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: "msk7316@gmail.com",
+        // to: email,
+        to: "minsuk7316@naver.com",
         subject: subject,
         text: message,
       }),
@@ -26,6 +28,7 @@ const HomePage: React.FC = () => {
     if (res.ok) {
       setStatus("Email sent successfully!");
       ("msk7316@gmail.com");
+      // setEmail("");
       setSubject("");
       setMessage("");
     } else {
@@ -38,12 +41,20 @@ const HomePage: React.FC = () => {
       <section className="w-[300px] h-[500px] bg-white shadow-lg rounded-lg p-6">
         <h1 className="text-lg font-bold text-center mb-4">Send Email</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">msk7316@gmail.com</div>
+          <input
+            type="email"
+            value="To. minsuk7316@naver.com"
+            // value={email}
+            // onChange={e => setEmail(e.target.value)}
+            placeholder="받을 사람"
+            required
+            className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          />
           <input
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder="Subject"
+            placeholder="NickName Or Subject"
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
@@ -52,7 +63,7 @@ const HomePage: React.FC = () => {
             onChange={e => setMessage(e.target.value)}
             placeholder="Message"
             required
-            className="p-2 border border-gray-300 rounded h-40 resize-none focus:outline-none focus:border-blue-500"
+            className="p-2 border border-gray-300 rounded h-32 resize-none focus:outline-none focus:border-blue-500"
           />
           <button type="submit" className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
             Send Email
