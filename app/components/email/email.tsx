@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
-            value="To. minsuk7316@naver.com"
+            value="To.minsuk7316@naver.com"
             // value={email}
             // onChange={e => setEmail(e.target.value)}
             placeholder="받을 사람"
@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder="NickName Or Subject"
+            placeholder="Name Or Subject"
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />

@@ -10,8 +10,8 @@ export default function Community() {
   return (
     <main className="w-full h-[88vh] flex flex-col items-center">
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2">Dreams</span>
-      <section className="w-[100%] h-[75%] flex flex-col items-center justify-around">
-        <div className="justify-center w-[95%] mr-6 gap-[1px] sm:mr-0 sm:w-[75%] h-[86%] items-center flex flex-wrap pl-8 overflow-y-scroll lg:justify-start sm:gap-2">
+      <section className="w-[90%] h-[75%] flex flex-col items-center justify-around">
+        <div className="justify-center w-[95%] mr-6 gap-[1px] sm:mr-0 sm:w-[75%] h-[86%] items-center flex flex-wrap pl-8 overflow-y-scroll lg:justify-start sm:gap-4">
           <ListCard />
           <ListCard />
           <ListCard />
