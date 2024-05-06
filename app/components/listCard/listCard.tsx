@@ -22,7 +22,7 @@ export default function ListCard() {
   useEffect(() => {
     const handleResize = () => {
       // 여기서 "sm" 사이즈를 640px로 가정합니다. 프로젝트의 실제 breakpoint에 맞게 조정하세요.
-      setMaxChars(window.innerWidth >= 640 ? 14 : 20);
+      setMaxChars(window.innerWidth >= 640 ? 12 : 20);
     };
 
     // 컴포넌트 마운트 시 뷰포트 너비 체크
@@ -40,7 +40,7 @@ export default function ListCard() {
     <>
       <main
         onClick={handleOpenModal}
-        className="flex flex-col w-[360px] h-[55px] items-center sm:w-[340px] sm:h-[150px]  rounded-md bg-[#E4CBED] sm:bg-[#E4CBED] border-b-[1px] border-black border-opacity-50 sm:border-2 sm:border-white"
+        className="flex flex-col w-[360px] h-[55px] items-center sm:w-[300px] sm:h-[150px]  rounded-md bg-[#E4CBED] sm:bg-[#E4CBED] border-b-[1px] border-black border-opacity-50 sm:border-2 sm:border-white"
       >
         <section className="flex items-center justify-between w-[95%]  h-[25%]">
           <span className="text-start w-50% h-[80%] text-[16px] sm:text-[18px]">레전드오리진</span>

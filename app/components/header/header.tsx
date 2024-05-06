@@ -18,36 +18,24 @@ export default function Header() {
             </span>
           </Link>
         </div>
-        <div className="w-[68vw]  flex sm:hidden flex-row items-end justify-between pr-5 pb-[15px]">
+        <div className="w-[40vw]  flex sm:hidden flex-row items-end justify-between pr-5 pb-[15px]">
           <Link href={"/"} className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
             해몽하기
           </Link>
           <Link href={"/community"} className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
             꿈 게시판
           </Link>
-          {/* <Link href={"/myDreams"} className="text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
-            MY
-          </Link> */}
-          <div onClick={() => alert("죄송하지만 아직 이용하실 수 없습니다.")} className="text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
-            MY
-          </div>
           <Link href={"/"} className=" text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
             문의
           </Link>
         </div>
-        <div className="hidden sm:flex sm:w-[400px]  flex-row justify-between items-end pr-2  lg:pr-10 pb-[6px] lg:w-[40vw] ">
+        <div className="hidden sm:flex sm:w-[400px]  flex-row justify-between items-end pr-2  lg:pr-10 pb-[6px] lg:w-[30vw] ">
           <Link href={"/"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             꿈 해몽하기
           </Link>
           <Link href={"/community"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             다른 사람 꿈 보기
           </Link>
-          {/* <Link href={"/myDreams"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
-            내 꿈 보기
-          </Link> */}
-          <div onClick={() => alert("죄송하지만 아직 이용하실 수 없습니다..!")} className="text-[14px] font-bold 2xl:text-[22px] xl:text-[18px] text-[#D5C6ED]">
-            내 꿈 보기
-          </div>
           <Link href={"/inquire"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             제작자 / 문의
           </Link>

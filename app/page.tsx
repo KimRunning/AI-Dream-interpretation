@@ -1,14 +1,24 @@
 "use client";
+import { useEffect } from "react";
 import { useChat } from "ai/react";
+import { useRouter } from "next/navigation";
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+export default function Home() {
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const router = useRouter();
 
   const onSubmitHandler = (event: any) => {
-    event.preventDefault(); // 페이지 새로고침 방지
-    handleSubmit(event); // useChat 훅에서 제공된 handleSubmit 함수 호출
+    event.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
+    handleSubmit(event); // 폼 제출 처리
   };
 
+  useEffect(() => {
+    // isLoading이 false이고 messages가 업데이트 되었을 때 실행
+    if (!isLoading && messages.length > 0) {
+      sessionStorage.setItem("messages", JSON.stringify(messages)); // messages 배열을 sessionStorage에 저장
+      router.push("/result");
+    }
+  }, [messages, isLoading]); // messages 또는 isLoading 상태가 변경될
   return (
     <>
       <main className=" h-[88vh] w-[100vw] flex flex-col">
@@ -37,14 +47,16 @@ export default function Chat() {
             </button>
           </form>
         </section>
-        <section className="bg-purple flex flex-col w-full h-[5px]  mx-auto stretch">
-          {messages.map(m => (
-            <div key={m.id} className="whitespace-pre-wrap">
-              {m.role === "user" ? "User: " : "AI: "}
-              {m.content}
-            </div>
-          ))}
-        </section>
+        {/* {!isLoading && ( // 로딩이 완료된 후에 메시지 표시
+          <section className="bg-purple flex flex-col w-full h-[5px] mx-auto stretch">
+            {messages.map(m => (
+              <div key={m.id} className="whitespace-pre-wrap">
+                {m.role === "user" ? "User: " : "AI: "}
+                {m.content}
+              </div>
+            ))}
+          </section>
+        )} */}
       </main>
     </>
   );
