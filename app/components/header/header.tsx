@@ -11,7 +11,7 @@ export default function Header() {
             href={"/"}
             className="text-[40px] flex flex-row font-bold text-transparent bg-gradient-to-r bg-clip-text from-pink via-lightBlue to-lightGreen "
           >
-            해몽AI
+            꿈 해몽
             <span className=" text-transparent bg-gradient-to-r bg-clip-text from-pink via-lightBlue to-lightGreen hidden lg:inline">
               &nbsp;- 꿈<span className=" 2xl:text-[30px] lg:text-[24px]">을 통해 </span> 알<span className="2xl:text-[30px] lg:text-[24px]">아보는</span> 무
               <span className="2xl:text-[30px] lg:text-[24px]">의식</span>
@@ -34,7 +34,7 @@ export default function Header() {
             꿈 해몽하기
           </Link>
           <Link href={"/community"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
-            다른 사람 꿈 보기
+            꿈 게시판
           </Link>
           <Link href={"/inquire"} className="  font-bold 2xl:text-[22px] xl:text-[18px] sm:text-[16px] text-[#D5C6ED]">
             제작자 / 문의
