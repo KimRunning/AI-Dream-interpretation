@@ -46,19 +46,26 @@ export default function Home() {
         <section className="w-[100%] h-[45vh] mx-auto items-center flex flex-col justify-center">
           <form className="w-[80%] m-1 sm:w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
             <span className="mb-1 w-[80%] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
-            <textarea
-              className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
-              value={input}
-              placeholder="당신이 꾼 꿈을 적어주세요!"
-              onChange={handleInputChange}
-            />
+            <div>
+              <p id="dream-description" className="sr-only">
+                "~하는 꿈" 또는 "~을 해몽해"라고 알려주셔야 혼란을 일으키지 않습니다..!
+              </p>
+              <textarea
+                className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
+                value={input}
+                placeholder="당신이 꾼 꿈을 들려주세요..!"
+                aria-describedby="dream-description"
+                onChange={handleInputChange}
+              />
+            </div>
+
             <button type="submit" className="opacity-100 z-50 bg-[#AC5EFA] text-white mt-3 w-[180px] h-[45px] rounded-md">
               분석하기
             </button>
           </form>
         </section>
       </main>
-      <div onClick={modalOpen}>모달열기</div>
+      {/* <div onClick={modalOpen}>모달열기</div> */}
       <LoadingModal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
     </>
   );

@@ -3,6 +3,10 @@ module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        doHyeon: ['"Do Hyeon"', "sans-serif"],
+        poetsenOne: ['"Poetsen One"', "sans-serif"],
+      },
       colors: {
         purple: "rgba(105, 47, 140, 1)",
         navy: "rgba(18, 28, 118, 1)",

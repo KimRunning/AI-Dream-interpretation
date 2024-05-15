@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder="Name Or Subject"
+            placeholder="Name or Title"
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />

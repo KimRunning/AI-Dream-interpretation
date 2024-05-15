@@ -34,7 +34,7 @@ const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
 
   const truncateText = (text: string, maxLength: number) => {
     if (text.length > maxLength) {
-      return text.substring(0, maxLength) + ". . .";
+      return text.substring(0, maxLength) + " · · ·";
     }
     return text;
   };
@@ -48,7 +48,7 @@ const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
           key={dream._id}
         >
           <section className="w-[100%] h-[75%] flex justify-center m-auto">
-            <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[24px] whitespace-normal font-medium	">{truncateText(dream.content[0].content, 15)}</div>
+            <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold	">{truncateText(dream.content[0].content, 15)}</div>
           </section>
           <Modal isOpen={isModalOpen && activeModalId === dream._id} onClose={handleCloseModal} content={dream.content} />
         </main>
