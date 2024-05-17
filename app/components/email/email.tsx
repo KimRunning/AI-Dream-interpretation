@@ -2,7 +2,6 @@
 import { useState, FormEvent } from "react";
 
 const HomePage: React.FC = () => {
-  // const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
@@ -17,7 +16,6 @@ const HomePage: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // to: email,
         to: "minsuk7316@naver.com",
         subject: subject,
         text: message,
@@ -27,8 +25,6 @@ const HomePage: React.FC = () => {
     const result = await res.json();
     if (res.ok) {
       setStatus("Email sent successfully!");
-      ("msk7316@gmail.com");
-      // setEmail("");
       setSubject("");
       setMessage("");
     } else {
@@ -43,9 +39,8 @@ const HomePage: React.FC = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
-            value="To.minsuk7316@naver.com"
-            // value={email}
-            // onChange={e => setEmail(e.target.value)}
+            defaultValue="minsuk7316@naver.com"
+            readOnly
             placeholder="받을 사람"
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"

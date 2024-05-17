@@ -13,15 +13,15 @@ const LoadingModal: React.FC<LoadingModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex  justify-center items-center z-50">
       <div className="bg-white p-5 rounded-md sm:w-[500px] text-center relative">
-        <Image className="w-20 h-20 bg-contain bg-no-repeat bg-center animate-spin mx-auto mb-4" src={moonIcon} alt="몽환적 이미지" />
-        <h2 className="text-4xl mb-4">분석 중</h2>
+        <Image className="w-20 h-20 bg-contain bg-no-repeat bg-center animate-spin mx-auto mb-4" src={moonIcon} alt="꿈알무 아이콘" />
+        <h2 className="text-4xl mb-4 text-bold">분석 중</h2>
         <br />
-        <p className="text-2xl text-start ">
-          꿈은 종종 무의식의 요소들을 시각적이고 감각적인 형태로 표현합니다. 이를 통해 우리는 내면세계를 탐험하거나 잠재적인 감정을 탐구할 수 있습니다.
+        <p className="text-xl text-center ">
+          "꿈은 무의식적인 욕망과 감정이 수면 중에 억압에서 풀려나와 표출되는 과정이며 꿈의 해석은 심리적 이해와 치료를 돕는 수단이다"
+          <br />
+          <br />
+          <p className="text-2xl text-semibold">- 프로이트 -</p>
         </p>
-        <button onClick={onClose} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">
-          닫기
-        </button>
       </div>
     </div>
   );

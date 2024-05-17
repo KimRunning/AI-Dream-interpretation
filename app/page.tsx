@@ -25,10 +25,6 @@ export default function Home() {
     }
   }, [messages, isLoading]);
 
-  const modalOpen = () => {
-    setModalIsOpen(!modalIsOpen);
-  };
-
   return (
     <>
       <main className="h-[88vh] w-[100vw] flex flex-col">
@@ -47,14 +43,10 @@ export default function Home() {
           <form className="w-[80%] m-1 sm:w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
             <span className="mb-1 w-[80%] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
             <div>
-              <p id="dream-description" className="sr-only">
-                "~하는 꿈" 또는 "~을 해몽해"라고 알려주셔야 혼란을 일으키지 않습니다..!
-              </p>
               <textarea
                 className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
                 value={input}
                 placeholder="당신이 꾼 꿈을 들려주세요..!"
-                aria-describedby="dream-description"
                 onChange={handleInputChange}
               />
             </div>
@@ -65,7 +57,6 @@ export default function Home() {
           </form>
         </section>
       </main>
-      {/* <div onClick={modalOpen}>모달열기</div> */}
       <LoadingModal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
     </>
   );

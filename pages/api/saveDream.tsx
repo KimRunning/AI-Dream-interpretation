@@ -8,7 +8,6 @@ export default async function saveDream(req: NextApiRequest, res: NextApiRespons
 
     if (req.method === "POST") {
       const { dream } = req.body;
-      console.log(dream[0].id);
 
       if (!dream) {
         return res.status(400).json({ message: "Dream is required" });

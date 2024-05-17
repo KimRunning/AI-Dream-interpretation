@@ -1,18 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Modal from "../modal/modal";
-
-interface DreamContent {
-  id: string;
-  createdAt: string;
-  content: string;
-  role: string;
-}
-
-interface Dream {
-  content: DreamContent[];
-  _id: string;
-}
+import { Dream } from "@/app/types";
 
 interface ListCardProps {
   dreams: Dream[];
@@ -48,9 +37,13 @@ const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
           key={dream._id}
         >
           <section className="w-[100%] h-[75%] flex justify-center m-auto">
-            <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold	">{truncateText(dream.content[0].content, 15)}</div>
+            {dream.dream && dream.dream.length > 0 ? (
+              <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold">{truncateText(dream.dream[0].content, 15)}</div>
+            ) : (
+              <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold">No content available</div>
+            )}
           </section>
-          <Modal isOpen={isModalOpen && activeModalId === dream._id} onClose={handleCloseModal} content={dream.content} />
+          <Modal isOpen={isModalOpen && activeModalId === dream._id} onClose={handleCloseModal} content={dream.dream} />
         </main>
       ))}
     </>

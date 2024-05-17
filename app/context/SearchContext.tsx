@@ -1,25 +1,16 @@
 "use client";
-
 import React, { createContext, useContext, useState, useCallback } from "react";
-
-interface DreamContent {
-  id: string;
-  createdAt: string;
-  content: string;
-  role: string;
-}
-
-interface Dream {
-  content: DreamContent[];
-  _id: string;
-}
+import { Dream } from "../types";
 
 interface SearchContextType {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   resetSearch: () => void;
-  fetchDreams: (query?: string) => void;
+  fetchDreams: (query?: string, cursor?: string) => Promise<{ dreams: Dream[]; nextCursor: string | null }>;
   dreams: Dream[];
+  nextCursor: string | null;
+  setDreams: React.Dispatch<React.SetStateAction<Dream[]>>;
+  setNextCursor: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -27,14 +18,17 @@ const SearchContext = createContext<SearchContextType | undefined>(undefined);
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [dreams, setDreams] = useState<Dream[]>([]);
+  const [nextCursor, setNextCursor] = useState<string | null>(null);
 
   const resetSearch = () => {
     setSearchQuery("");
+    setDreams([]);
+    setNextCursor(null);
   };
 
-  const fetchDreams = useCallback(async (query?: string) => {
+  const fetchDreams = useCallback(async (query: string = "", cursor: string | null = null) => {
     try {
-      const url = query ? `/api/searchDream?query=${query}` : "/api/getDream";
+      const url = cursor ? `/api/scrollDream?query=${query}&cursor=${cursor}` : `/api/scrollDream?query=${query}`;
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -47,17 +41,18 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       }
 
       const data = await response.json();
-      const transformedDreams: Dream[] = data.map((dream: any) => ({
-        content: dream.dream,
-        _id: dream._id,
-      }));
-      setDreams(transformedDreams);
+      return { dreams: data.dreams, nextCursor: data.nextCursor };
     } catch (err) {
       console.error("Error fetching dreams data:", err);
+      return { dreams: [], nextCursor: null };
     }
   }, []);
 
-  return <SearchContext.Provider value={{ searchQuery, setSearchQuery, resetSearch, fetchDreams, dreams }}>{children}</SearchContext.Provider>;
+  return (
+    <SearchContext.Provider value={{ searchQuery, setSearchQuery, resetSearch, fetchDreams, dreams, nextCursor, setDreams, setNextCursor }}>
+      {children}
+    </SearchContext.Provider>
+  );
 };
 
 export const useSearch = () => {

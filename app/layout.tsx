@@ -2,9 +2,9 @@ import "./globals.css";
 import Header from "./components/header/header";
 import Stars from "./components/stars/stars";
 import { SearchProvider } from "./context/SearchContext";
-import { Lora } from "@next/font/google";
+import { Noto_Sans_KR } from "@next/font/google";
 
-const lora = Lora({ subsets: ["latin"], weight: ["400"] });
+const notoSansKr = Noto_Sans_KR({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scrollbar-hide">
-      <body className={lora.className}>
+      <body className={notoSansKr.className}>
         <SearchProvider>
           <Header />
           <div className={"notice"}>
