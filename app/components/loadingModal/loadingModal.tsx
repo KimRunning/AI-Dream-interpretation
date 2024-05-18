@@ -16,7 +16,7 @@ const LoadingModal: React.FC<LoadingModalProps> = ({ isOpen, onClose }) => {
         <Image className="w-20 h-20 bg-contain bg-no-repeat bg-center animate-spin mx-auto mb-4" src={moonIcon} alt="꿈알무 아이콘" />
         <h2 className="text-4xl mb-4 text-bold">분석 중</h2>
         <br />
-        <p className="text-xl text-center ">
+        <p className="text-xl text-center text-semibold ">
           "꿈은 무의식적인 욕망과 감정이 수면 중에 억압에서 풀려나와 표출되는 과정이며 꿈의 해석은 심리적 이해와 치료를 돕는 수단이다"
           <br />
           <br />

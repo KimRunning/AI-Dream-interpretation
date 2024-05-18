@@ -31,34 +31,24 @@ body {
   overflow-y: auto;
 }
 
-/* 모든 스크롤바에 적용되는 스타일  */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-/* 스크롤바 핸들(Thumb) */
 ::-webkit-scrollbar-thumb {
   background: #9098d4;
   border-radius: 5px;
 }
 
-/* 스크롤바 핸들 호버 시 */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(123, 23, 255);
 }
 
-/* 스크롤바 트랙(Track) */
 ::-webkit-scrollbar-track {
   background: #f8f7f7;
   border-radius: 5px;
 }
-
-/* Firefox 스크롤바 스타일링 */
-/* * {
-  scrollbar-width: thin;
-  scrollbar-color: gray #f0f0f0;
-} */
 
 .notice {
   background: -webkit-linear-gradient(top, rgb(0, 0, 0) 50%, rgb(25, 19, 39) 80%, rgb(43, 32, 72));

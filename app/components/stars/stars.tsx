@@ -7,14 +7,13 @@ interface Estrela {
   opacity: string;
   tam: string;
   delay: number;
-  left: string; // 퍼센트 단위로 변경
-  top: string; // 퍼센트 단위로 변경
+  left: string;
+  top: string;
 }
 
 function Stars() {
   const [estrelas, setEstrelas] = useState<Estrela[]>([]);
 
-  // 별의 위치를 계산하는 함수
   const createEstrelas = () => {
     const style = ["style1", "style2", "style3", "style4"];
     const tam = ["tam1", "tam1", "tam1", "tam2", "tam3"];

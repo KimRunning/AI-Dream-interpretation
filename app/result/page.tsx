@@ -50,7 +50,7 @@ export default function Result() {
       } else {
         const error = await response.json();
         console.error("카드 저장 중 오류 발생:", error);
-        toast(error.message); // 서버에서 전송한 메시지를 표시
+        toast(error.message);
       }
     } catch (error) {
       console.error("Error parsing dreamData or mapping:", error);

@@ -12,9 +12,9 @@ export default function Community() {
 
   const fetchInitialDreams = useCallback(async () => {
     setIsLoading(true);
-    setSearchQuery(""); // 검색어를 공백으로 초기화
+    setSearchQuery("");
     try {
-      const { dreams, nextCursor } = await fetchDreams(""); // 초기 로드 시 검색어 없이 전체 데이터 가져오기
+      const { dreams, nextCursor } = await fetchDreams("");
       setDreams(dreams);
       setNextCursor(nextCursor);
       setError(null);
@@ -84,7 +84,7 @@ export default function Community() {
   }, [dreams]);
 
   return (
-    <main className="w-full h-[88vh] flex flex-col items-center scroll-none">
+    <main className="w-full h-[88vh] flex flex-col items-center scroll-none relative">
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2 cursor-pointer" onClick={fetchInitialDreams}>
         Dreams
       </span>
@@ -118,7 +118,13 @@ export default function Community() {
             </form>
           </div>
         </div>
-        {isLoading && <div>Loading more dreams...</div>}
+        {isLoading && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-transparent p-6 rounded-lg shadow-lg">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-200 mx-auto "></div>
+            </div>
+          </div>
+        )}
         {error && <div className="text-red-500 mt-4">{error}</div>}
       </section>
     </main>

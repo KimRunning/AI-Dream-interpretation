@@ -26,12 +26,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
   };
 
   const handleBackgroundClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.stopPropagation(); // 배경 클릭시에만 이벤트가 처리되도록 버블링 중지
-    onClose(); // 모달 닫기 함수 호출
+    event.stopPropagation();
+    onClose();
   };
 
   const stopPropagation = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.stopPropagation(); // 내부 클릭시 버블링을 중지하여 배경 클릭으로 전파되지 않도록 함
+    event.stopPropagation();
   };
 
   return (

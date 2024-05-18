@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import ListCard from "../components/listCard/listCard";
 
 export default function Community() {
   const handleSearchClick = () => {

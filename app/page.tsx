@@ -8,27 +8,43 @@ export default function Home() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [hideSection, setHideSection] = useState(false);
 
   const onSubmitHandler = (event: any) => {
-    event.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
-    handleSubmit(event); // 폼 제출 처리
+    event.preventDefault();
+    handleSubmit(event);
   };
 
   useEffect(() => {
-    // isLoading이 true이면 모달을 열고, false이면 모달을 닫습니다.
+    const handleResize = () => {
+      setHideSection(window.innerHeight < 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     setModalIsOpen(isLoading);
 
-    // isLoading이 false이고 messages가 업데이트 되었을 때 실행
     if (!isLoading && messages.length > 0) {
-      sessionStorage.setItem("messages", JSON.stringify(messages)); // messages 배열을 sessionStorage에 저장
+      sessionStorage.setItem("messages", JSON.stringify(messages));
       router.push("/result");
     }
   }, [messages, isLoading]);
 
   return (
     <>
-      <main className="h-[88vh] w-[100vw] flex flex-col">
-        <section className="flex flex-col justify-around items-center w-[200px] h-[160px] mt-5 mb-7 text-[30px] pl-[40px] sm:h-[230px] sm:pl-[0px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto">
+      <main className="h-[88vh] w-[100vw] flex flex-col overflow-hidden">
+        <section
+          className={`flex flex-col justify-around items-center w-[200px] h-[160px] mt-5 mb-7 text-[30px] pl-[40px] sm:h-[230px] sm:pl-[0px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto ${
+            hideSection ? "invisible" : ""
+          }`}
+        >
           <div className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
             &nbsp; 꿈<span className="text-[20px] sm:text-[30px]">을 통해</span>
           </div>
@@ -41,7 +57,7 @@ export default function Home() {
         </section>
         <section className="w-[100%] h-[45vh] mx-auto items-center flex flex-col justify-center">
           <form className="w-[80%] m-1 sm:w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
-            <span className="mb-1 w-[80%] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
+            <span className="mb-1 w-[80vw] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
             <div>
               <textarea
                 className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
@@ -50,7 +66,6 @@ export default function Home() {
                 onChange={handleInputChange}
               />
             </div>
-
             <button type="submit" className="opacity-100 z-50 bg-[#AC5EFA] text-white mt-3 w-[180px] h-[45px] rounded-md">
               분석하기
             </button>

@@ -24,13 +24,12 @@ export default function ResultCard() {
 
   const toggleQuestion = () => setOnQuestion(!onQuestion);
 
-  // 안전하게 메시지 내용을 불러오는 함수
   const getMessageContent = (index: number) => {
     return messages[index] ? messages[index].content : "No message available.";
   };
 
   if (!messages.length) {
-    return <p>Loading messages or no messages available...</p>; // 메시지가 없을 때 안내
+    return <p>Loading messages or no messages available...</p>;
   }
 
   return (
