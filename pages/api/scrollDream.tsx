@@ -16,7 +16,12 @@ export default async function scrollDreams(req: NextApiRequest, res: NextApiResp
     const searchQuery = query ? { "dream.content": { $regex: query.toString(), $options: "i" } } : {};
     const findQuery = cursor ? { ...searchQuery, _id: { $lt: new ObjectId(cursor as string) } } : searchQuery;
 
+    console.log("searchQuery:", searchQuery); // 쿼리 조건 로그 추가
+    console.log("findQuery:", findQuery); // 쿼리 조건 로그 추가
+
     const dreams = await collection.find(findQuery).sort({ _id: -1 }).limit(Number(limit)).toArray();
+
+    console.log("Found dreams:", dreams); // 가져온 데이터 로그 추가
 
     const lastDream = dreams[dreams.length - 1];
     const nextCursor = lastDream ? lastDream._id : null;
