@@ -16,10 +16,7 @@ export async function connectToDatabase(): Promise<Db> {
   }
 
   if (!cachedClient) {
-    cachedClient = new MongoClient(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000, // 서버 선택 타임아웃 (밀리초)
-      socketTimeoutMS: 10000, // 소켓 타임아웃 (밀리초)
-    });
+    cachedClient = new MongoClient(MONGODB_URI);
     await cachedClient.connect();
   }
 
