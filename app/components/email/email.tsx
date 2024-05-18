@@ -5,10 +5,14 @@ const HomePage: React.FC = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true);
     setStatus("Sending...");
+    setIsSuccess(null);
 
     const res = await fetch("/api/sendEmail", {
       method: "POST",
@@ -25,15 +29,25 @@ const HomePage: React.FC = () => {
     const result = await res.json();
     if (res.ok) {
       setStatus("Email sent successfully!");
+      setIsSuccess(true);
       setSubject("");
       setMessage("");
     } else {
       setStatus(`Failed to send email: ${result.message}`);
+      setIsSuccess(false);
     }
+    setIsLoading(false);
   };
 
   return (
     <main className="w-full h-[88vh] flex justify-center items-center">
+      {isLoading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-transparent p-6 rounded-lg shadow-lg">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-200 mx-auto"></div>
+          </div>
+        </div>
+      )}
       <section className="w-[300px] h-[500px] bg-white shadow-lg rounded-lg p-6">
         <h1 className="text-lg font-bold text-center mb-4">Send Email</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -64,7 +78,7 @@ const HomePage: React.FC = () => {
             Send Email
           </button>
         </form>
-        <p className="text-center mt-4 text-sm text-gray-600">{status}</p>
+        <p className={`text-center mt-4 text-sm ${isSuccess === true ? "text-green-500" : isSuccess === false ? "text-red-500" : ""}`}>{status}</p>
       </section>
     </main>
   );

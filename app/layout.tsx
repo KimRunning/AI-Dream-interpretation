@@ -24,7 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className="scrollbar-hide">
       <head>
-        <link rel="icon" href="/HeamongIcon.png" type="image/png" />
+        <link rel="icon" href="/HeamongIcon.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/HeamongIcon.png" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon" href="/HeamongIcon.png" /> <meta name="description" content={metadata.description_ko} />
         <meta name="description" content={metadata.description_ko} />
         <meta name="keywords" content={metadata.keywords_ko} />
         <meta name="author" content={metadata.author} />

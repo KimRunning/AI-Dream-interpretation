@@ -1,4 +1,4 @@
-import connectToDatabase from "@/lib/mongoDB/connect";
+import { connectToDatabase } from "@/lib/mongoDB/connect";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function saveDream(req: NextApiRequest, res: NextApiResponse) {
