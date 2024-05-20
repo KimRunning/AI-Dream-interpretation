@@ -41,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="twitter:title" content={metadata.title_ko} />
         <meta name="twitter:description" content={metadata.description_ko} />
         {/* <meta name="twitter:image" content={metadata.twitter_image} /> */}
+        <meta name="naver-site-verification" content="5b62779f512f001e2879a440d11ee8932c9ee9af" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com" hrefLang="en" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ko" hrefLang="ko" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/es" hrefLang="es" />
