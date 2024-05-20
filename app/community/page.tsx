@@ -39,7 +39,7 @@ export default function Community() {
     }
     setIsLoading(true);
     try {
-      const { dreams, nextCursor } = await fetchDreams(searchQuery); // 검색어를 포함하여 데이터 가져오기
+      const { dreams, nextCursor } = await fetchDreams(searchQuery);
       setDreams(dreams);
       setNextCursor(nextCursor);
       setError(null);
@@ -50,12 +50,12 @@ export default function Community() {
     }
   };
 
-  const handleScroll = useCallback(
+  const handleScrollOrTouchMove = useCallback(
     throttle(async () => {
       const container = containerRef.current;
       if (container) {
         const { scrollTop, scrollHeight, clientHeight } = container;
-        if (scrollHeight - scrollTop === clientHeight && !isLoading && nextCursor) {
+        if (scrollHeight - scrollTop <= clientHeight * 1.1 && !isLoading && nextCursor) {
           setIsLoading(true);
           const { dreams: newDreams, nextCursor: newNextCursor } = await fetchDreams(searchQuery, nextCursor);
           setDreams(prevDreams => [...prevDreams, ...newDreams]);
@@ -70,26 +70,28 @@ export default function Community() {
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      container.addEventListener("scroll", handleScroll);
+      container.addEventListener("scroll", handleScrollOrTouchMove);
+      container.addEventListener("touchmove", handleScrollOrTouchMove);
     }
     return () => {
       if (container) {
-        container.removeEventListener("scroll", handleScroll);
+        container.removeEventListener("scroll", handleScrollOrTouchMove);
+        container.removeEventListener("touchmove", handleScrollOrTouchMove);
       }
     };
-  }, [handleScroll]);
+  }, [handleScrollOrTouchMove]);
 
   const renderDreams = useMemo(() => {
     return <ListCard dreams={dreams} />;
   }, [dreams]);
 
   return (
-    <main className="w-full h-[88vh] flex flex-col items-center scroll-none relative">
+    <main className="w-full h-[88vh] flex flex-col items-center overflow-hidden relative">
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2 cursor-pointer" onClick={fetchInitialDreams}>
         Dreams
       </span>
       <section className="w-[95%] h-[75%] flex flex-col items-center justify-center">
-        <div ref={containerRef} className=" justify-center gap-2 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap 2xl: overflow-y-scroll ">
+        <div ref={containerRef} className="justify-center gap-2 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap overflow-y-scroll">
           {renderDreams}
         </div>
         <div className="flex flex-row w-[370px] mt-4 md:w-[800px] h-[10%] items-end justify-center">
