@@ -16,12 +16,7 @@ export default async function scrollDreams(req: NextApiRequest, res: NextApiResp
     const searchQuery = query ? { "dream.content": { $regex: query.toString(), $options: "i" } } : {};
     const findQuery = cursor ? { ...searchQuery, _id: { $lt: new ObjectId(cursor as string) } } : searchQuery;
 
-    console.log("searchQuery:", searchQuery);
-    console.log("findQuery:", findQuery);
-
     const dreams = await collection.find(findQuery).sort({ _id: -1 }).limit(Number(limit)).toArray();
-
-    console.log("Found dreams:", dreams);
 
     const lastDream = dreams[dreams.length - 1];
     const nextCursor = lastDream ? lastDream._id : null;

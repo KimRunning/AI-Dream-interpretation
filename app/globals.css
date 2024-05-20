@@ -1,3 +1,4 @@
+/* 기존 코드 유지 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,25 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #9098d4;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(123, 23, 255);
-}
-
-::-webkit-scrollbar-track {
-  background: #f8f7f7;
-  border-radius: 5px;
-}
-
 .notice {
   background: -webkit-linear-gradient(top, rgb(0, 0, 0) 50%, rgb(25, 19, 39) 80%, rgb(43, 32, 72));
   width: 100%;
@@ -60,4 +42,28 @@ body {
   .hide-on-small-height {
     display: none;
   }
+}
+
+/* 스크롤바 숨기기 - 웹킷 기반 브라우저 (Chrome, Safari, Edge 등) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 스크롤바 숨기기 - Firefox */
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE와 Edge */
+}
+
+/* 스크롤바 숨기기 - IE와 Edge */
+body {
+  -ms-overflow-style: none; /* IE와 Edge */
+}
+
+/* 스크롤바 숨기기 - Android 및 iOS 브라우저 */
+html,
+body {
+  overflow: -moz-scrollbars-none; /* Firefox on Android */
+  -ms-overflow-style: none; /* IE와 Edge */
+  scrollbar-width: none; /* Firefox */
 }

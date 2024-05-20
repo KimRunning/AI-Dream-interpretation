@@ -88,14 +88,11 @@ export default function Community() {
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2 cursor-pointer" onClick={fetchInitialDreams}>
         Dreams
       </span>
-      <section className="w-[95%] h-[75%] flex flex-col items-center justify-around">
-        <div
-          ref={containerRef}
-          className="justify-center gap-2 ml-4 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap 2xl:pl-8 overflow-y-scroll 2xl:justify-start"
-        >
+      <section className="w-[95%] h-[75%] flex flex-col items-center justify-center">
+        <div ref={containerRef} className=" justify-center gap-2 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap 2xl: overflow-y-scroll ">
           {renderDreams}
         </div>
-        <div className="flex flex-row w-[370px] md:w-[800px] h-[10%] items-end justify-center">
+        <div className="flex flex-row w-[370px] mt-4 md:w-[800px] h-[10%] items-end justify-center">
           <div className="relative">
             <form onSubmit={handleSearchClick}>
               <input
@@ -103,7 +100,7 @@ export default function Community() {
                 value={searchQuery}
                 onChange={handleInputChange}
                 placeholder="질문 또는 답변의 내용을 입력해 주세요..!"
-                className="w-[360px] h-[40px] font-bold border-3 border-[#B3B8DF] rounded-md pl-2 sm:ml-6 pr-10"
+                className="w-[360px] h-[40px] font-bold border-3 border-[#B3B8DF] rounded-md pl-2 pr-10"
               />
               <button
                 type="submit"

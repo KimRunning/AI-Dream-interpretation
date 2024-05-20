@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/HeamongIcon.png" sizes="32x32" type="image/png" />
         <link rel="icon" href="/HeamongIcon.png" sizes="16x16" type="image/png" />
         <link rel="apple-touch-icon" href="/HeamongIcon.png" /> <meta name="description" content={metadata.description_ko} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description_ko} />
         <meta name="keywords" content={metadata.keywords_ko} />
         <meta name="author" content={metadata.author} />
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="bg-white fixed right-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div>
             {children}
             <div className="flex items-center justify-center">
-              <div className="fixed w-full h-[120px] bg-violet-600 sm:w-[500px] md:w-[700px] hide-on-small-height">광고배너</div>
+              <div className="fixed w-full h-[100px] bg-violet-600 sm:w-[500px] md:w-[700px] hide-on-small-height">광고배너</div>
             </div>
           </div>
         </SearchProvider>
