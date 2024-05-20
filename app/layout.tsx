@@ -45,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" href="https://www.dreaminterpretaion.com" hrefLang="en" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ko" hrefLang="ko" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/es" hrefLang="es" />
+        <link rel="canonical" href="https://www.dreaminterpretationai.com/" />
         <title>{metadata.title_ko}</title>
       </head>
       <body className={notoSansKr.className}>
