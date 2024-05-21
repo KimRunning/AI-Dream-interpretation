@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import haemong from "../../../public/Image/해몽 이미지1.jpg";
+import RandomImage from "../randomImage/randomImage";
 
 interface ModalProps {
   isOpen: boolean;
@@ -47,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
                 <button onClick={changeQuestion}>◁ 질문</button>
                 <button onClick={onClose}>닫기</button>
               </div>
-              <Image className="w-[270px] h-[180px] sm:w-[380px] sm:h-[230px] mt-1" src={haemong} alt="몽환적 이미지" />
+              <RandomImage />
               <br />
               <div className="w-[270px] h-[180px] sm:w-[380px] sm:h-[245px] text-white overflow-y-scroll scrollbar-hide text-[18px]">
                 {content[1]?.content || "No content available"}

@@ -1,7 +1,6 @@
 "use client";
-import Image from "next/image";
-import haemong from "../../../public/Image/해몽 이미지1.jpg";
 import { useEffect, useState } from "react";
+import RandomImage from "../randomImage/randomImage";
 
 interface Message {
   content: string;
@@ -45,7 +44,7 @@ export default function ResultCard() {
           <button onClick={toggleQuestion}>{onQuestion ? "◁ 질문" : ""}</button>
           <button onClick={toggleQuestion}>{onQuestion ? "" : "답변 ▷"}</button>
         </div>
-        <Image className="w-[270px] h-[180px] sm:w-[380px] sm:h-[230px] mt-1" src={haemong} alt="몽환적 이미지" />
+        <RandomImage />
         <div className="w-[270px] h-[180px] sm:w-[380px] sm:h-[245px] text-white overflow-y-scroll scrollbar-hide">
           {onQuestion ? getMessageContent(1) : getMessageContent(0)}
         </div>
