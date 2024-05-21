@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.dreaminterpretationai.com/$1",
+      "permanent": true
+    }
+  ]
+}
