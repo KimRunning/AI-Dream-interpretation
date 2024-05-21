@@ -1,7 +1,22 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "https://www.dreaminterpretaion.com/(.*)",
+      "destination": "https://www.dreaminterpretationai.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "http://www.dreaminterpretaion.com/(.*)",
+      "destination": "https://www.dreaminterpretationai.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "http://dreaminterpretaion.com/(.*)",
+      "destination": "https://www.dreaminterpretationai.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "https://dreaminterpretaion.com/(.*)",
       "destination": "https://www.dreaminterpretationai.com/$1",
       "permanent": true
     }
