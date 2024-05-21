@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 const images = [
   "/Image/강아지.png",
   "/Image/고양이.png",
-  "/Image/달리는 소녀.png ",
-  "/Image/돌고래 (1).png ",
+  "/Image/달리는_소녀.png.png ",
+  "/Image/돌고래.png.png ",
   "/Image/벨루가.png ",
   "/Image/시바견.png ",
-  "/Image/신비한 소녀.png ",
+  "/Image/신비한_소녀.png.png ",
   "/Image/아기호랑이.png ",
   "/Image/여행자.png ",
-  "/Image/이상한 나라의 엘리스.png",
+  "/Image/이상한_나라의_엘리스.png.png",
   "/Image/폐허.png",
   "/Image/해몽이미지.png",
 ];
