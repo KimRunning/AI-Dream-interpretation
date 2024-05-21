@@ -33,11 +33,17 @@ export default function ResultCard() {
   }
 
   return (
-    <div className="z-50 w-[320px] h-[450px] sm:w-[450px] sm:h-[580px] bg-gradient-to-br from-[#E7E167] to-[#D34A52] flex items-center justify-center z-10">
-      <div className="z-50 w-[300px] h-[430px] sm:w-[430px] sm:h-[560px] bg-gradient-to-b from-[#733acf] to-[#312f33] flex flex-col items-center justify-between">
+    <div
+      className="w-[320px] h-[450px] sm:w-[450px] sm:h-[580px] bg-gradient-to-br from-[#E7E167] to-[#D34A52] flex items-center justify-center"
+      style={{ zIndex: 10 }}
+    >
+      <div
+        className="w-[300px] h-[430px] sm:w-[430px] sm:h-[560px] bg-gradient-to-b from-[#733acf] to-[#312f33] flex flex-col items-center justify-between"
+        style={{ zIndex: 50 }}
+      >
         <div className="w-[290px] font-bold sm:w-[420px] flex flex-row justify-between text-[15px] sm:text-[18px] text-white mt-1">
-          <span onClick={toggleQuestion}>{onQuestion ? "<질문" : ""}</span>
-          <span onClick={toggleQuestion}>{onQuestion ? "" : "답변 >"}</span>
+          <button onClick={toggleQuestion}>{onQuestion ? "◁ 질문" : ""}</button>
+          <button onClick={toggleQuestion}>{onQuestion ? "" : "답변 ▷"}</button>
         </div>
         <Image className="w-[270px] h-[180px] sm:w-[380px] sm:h-[230px] mt-1" src={haemong} alt="몽환적 이미지" />
         <div className="w-[270px] h-[180px] sm:w-[380px] sm:h-[245px] text-white overflow-y-scroll scrollbar-hide">

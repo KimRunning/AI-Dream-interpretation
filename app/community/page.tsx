@@ -91,8 +91,10 @@ export default function Community() {
         Dreams
       </span>
       <section className="w-[95%] h-[75%] flex flex-col items-center justify-center">
-        <div ref={containerRef} className=" m-auto justify-start gap-2 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap overflow-y-scroll">
-          {renderDreams}
+        <div className="w-full h-full flex justify-center items-center">
+          <div ref={containerRef} className=" justify-center gap-2 sm:gap-4 w-[95%] sm:w-[64%] h-[86%] items-center flex flex-wrap overflow-y-scroll">
+            {renderDreams}
+          </div>
         </div>
         <div className="flex flex-row w-[370px] mt-4 md:w-[800px] h-[10%] items-end justify-center">
           <div className="relative">

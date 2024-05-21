@@ -33,7 +33,7 @@ const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
       {dreams.map(dream => (
         <main
           onClick={() => handleOpenModal(dream._id)}
-          className="flex flex-col w-[360px] h-[50px] items-center rounded-md border-2 sm:border-4 border-white sm:h-[150px]"
+          className="flex flex-col w-[360px] h-[50px]  items-center rounded-md border-2 sm:border-4 border-white sm:h-[150px]"
           key={dream._id}
         >
           <section className="w-[100%] h-[75%] flex justify-center m-auto">

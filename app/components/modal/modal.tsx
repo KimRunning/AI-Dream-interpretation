@@ -44,8 +44,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
           {onQuestion ? (
             <>
               <div className="w-[290px] font-bold sm:w-[420px] flex flex-row justify-between text-[15px] sm:text-[18px] text-white mt-1">
-                <button onClick={changeQuestion}>＜ 질문</button>
-                <button onClick={onClose}>X</button>
+                <button onClick={changeQuestion}>◁ 질문</button>
+                <button onClick={onClose}>닫기</button>
               </div>
               <Image className="w-[270px] h-[180px] sm:w-[380px] sm:h-[230px] mt-1" src={haemong} alt="몽환적 이미지" />
               <br />
@@ -56,8 +56,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
           ) : (
             <>
               <div className="w-[290px] font-bold sm:w-[420px] flex flex-row justify-between text-[15px] sm:text-[18px] text-white mt-1">
-                <button onClick={changeQuestion}>＜ 답변</button>
-                <button onClick={onClose}>X</button>
+                <button onClick={changeQuestion}>◁ 답변</button>
+                <button onClick={onClose}>닫기</button>
               </div>
               <br />
               <div className="w-[270px] h-[180px] text-[18px] sm:w-[380px] sm:h-[245px] text-white overflow-y-scroll scrollbar-hide">

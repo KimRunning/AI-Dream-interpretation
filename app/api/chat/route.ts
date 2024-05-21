@@ -52,7 +52,9 @@ export async function POST(req: Request) {
           1. Primarily focus on interpreting dreams and discussing the mental state related to dreams. If a question is clearly unrelated to dreams, gently redirect by saying "I can primarily answer questions about dreams."
           2. Answer in a short, concise but in-depth manner.
           3. Translate your entire answer to the same language used by the user in the message. The user's message is in ${languageName}. Respond entirely in ${languageName}.
+          4. The answer begins with “This dream”
         Speech: Be kind, gentle, and always use honorifics.
+       
         
         Note: Pay increases by 50% if you stick to the guidelines in 'Talk' and 'Note when answering'.
         dream content: ${userMessage}`,

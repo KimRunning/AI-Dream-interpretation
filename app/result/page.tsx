@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResultCard from "../components/resultCard/resultCard";
 import Link from "next/link";
+import { useState } from "react";
 
 interface Dream {
   id: string;
@@ -12,12 +13,16 @@ interface Dream {
 }
 
 export default function Result() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const saveHandler = async () => {
+    setIsLoading(true);
     let dreamData: string | null = sessionStorage.getItem("messages");
 
     if (dreamData === null) {
       console.error("dreamData is null");
       toast("데이터가 존재하지 않습니다");
+      setIsLoading(false);
       return;
     }
 
@@ -55,6 +60,8 @@ export default function Result() {
     } catch (error) {
       console.error("Error parsing dreamData or mapping:", error);
       toast("데이터 처리 중 오류 발생");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,14 +85,24 @@ export default function Result() {
               >
                 게시판 가기
               </Link>
-              <button className="z-50 bg-[#D34A52] w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold">
-                SNS 공유
-              </button>
+              <Link
+                href={"/"}
+                className="z-50 bg-[#D34A52] flex items-center justify-center w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold"
+              >
+                HOME
+              </Link>
             </div>
           </div>
         </section>
         <section className="w-[100%] h-[13vh] flex justify-center "></section>
       </main>
+      {isLoading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-transparent p-6 rounded-lg shadow-lg">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-200 mx-auto"></div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
