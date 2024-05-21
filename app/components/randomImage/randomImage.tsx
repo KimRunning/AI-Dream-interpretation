@@ -3,18 +3,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const images = [
-  "/Image/강아지.png",
-  "/Image/고양이.png",
-  "/Image/달리는소녀.png ",
-  "/Image/돌고래.png ",
-  "/Image/벨루가.png ",
-  "/Image/시바견.png ",
-  "/Image/신비한소녀.png ",
-  "/Image/아기호랑이.png ",
-  "/Image/여행자.png ",
-  "/Image/이상한나라의엘리스.png",
-  "/Image/폐허.png",
-  "/Image/해몽이미지.png",
+  "/DreamImage/강아지.png",
+  "/DreamImage/고양이.png",
+  "/DreamImage/달리는소녀.png",
+  "/DreamImage/돌고래.png",
+  "/DreamImage/모험가.png",
+  "/DreamImage/벨루가.png",
+  "/DreamImage/시바견.png",
+  "/DreamImage/신비한소녀.png",
+  "/DreamImage/아기호랑이.png",
+  "/DreamImage/여행자.png",
+  "/DreamImage/이상한나라의엘리스.png",
+  "/DreamImage/폐허.png",
+  "/DreamImage/해몽이미지.png",
 ];
 
 export default function RandomImage() {
