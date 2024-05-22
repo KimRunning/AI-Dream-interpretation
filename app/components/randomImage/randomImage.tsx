@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const images = [
   "/DreamImage/강아지.png",
   "/DreamImage/고양이.png",
-  "/DreamImage/달리는소녀.png",
   "/DreamImage/돌고래.png",
   "/DreamImage/모험가.png",
   "/DreamImage/벨루가.png",
