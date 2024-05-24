@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResultCard from "../components/resultCard/resultCard";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Dream {
   id: string;
@@ -14,6 +14,14 @@ interface Dream {
 
 export default function Result() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    let dreamData: string | null = sessionStorage.getItem("messages");
+    if (dreamData && dreamData.includes("We can only answer questions about the content of your dreams.")) {
+      setIsButtonDisabled(true);
+    }
+  }, []);
 
   const saveHandler = async () => {
     setIsLoading(true);
@@ -40,6 +48,7 @@ export default function Result() {
           role: dream.role,
         })
       );
+      console.log(transformedDream);
       const response = await fetch("/api/saveDream", {
         method: "POST",
         headers: {
@@ -75,7 +84,10 @@ export default function Result() {
             <div className=" flex flex-row justify-between h-[25px]">
               <button
                 onClick={saveHandler}
-                className="z-50 bg-[#E7E167] w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold"
+                className={`z-50 w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold ${
+                  isButtonDisabled ? "bg-gray-600 border-gray-600 cursor-not-allowed" : "bg-[#E7E167]"
+                }`}
+                disabled={isButtonDisabled}
               >
                 저장 / 게시
               </button>
@@ -97,7 +109,7 @@ export default function Result() {
         <section className="w-[100%] h-[13vh] flex justify-center "></section>
       </main>
       {isLoading && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-transparent p-6 rounded-lg shadow-lg">
             <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-200 mx-auto"></div>
           </div>

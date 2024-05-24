@@ -4,13 +4,9 @@ import { useEffect, useState } from "react";
 
 const images = [
   "/DreamImage/강아지.png",
-  "/DreamImage/고양이.png",
-  "/DreamImage/돌고래.png",
   "/DreamImage/모험가.png",
-  "/DreamImage/벨루가.png",
   "/DreamImage/시바견.png",
   "/DreamImage/신비한소녀.png",
-  "/DreamImage/아기호랑이.png",
   "/DreamImage/여행자.png",
   "/DreamImage/이상한나라의엘리스.png",
   "/DreamImage/폐허.png",

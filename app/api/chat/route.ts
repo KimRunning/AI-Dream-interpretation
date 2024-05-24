@@ -21,6 +21,11 @@ const detectLanguage = (text: string): string => {
   return detectedLang;
 };
 
+const isDreamRelated = (text: string): boolean => {
+  const dreamKeywords = ["dream", "sleep", "nightmare", "dreamt", "dreamed", "REM", "lucid", "꿈", "수면", "악몽", "꿈꿨어", "REM", "루시드", "해몽"];
+  return dreamKeywords.some(keyword => text.toLowerCase().includes(keyword));
+};
+
 export async function POST(req: Request) {
   const { messages }: { messages: Message[] } = await req.json();
   console.log("User question:", messages);
@@ -36,28 +41,34 @@ export async function POST(req: Request) {
 
   const languageName = languageMap[detectedLanguage] || "English";
 
+  if (!isDreamRelated(userMessage)) {
+    const responseMessage = {
+      role: "assistant",
+      content: "We can only answer questions about the content of your dreams.",
+    };
+    return new Response(JSON.stringify(responseMessage.content), {
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  const systemMessage = `Topic: Dream interpretation.
+  Gpt role: Dream Interpretation Specialist.
+  Note when answering:
+    1. Primarily focus on interpreting dreams and discussing the mental state related to dreams. If a question is clearly unrelated to dreams, gently redirect by saying "I can primarily answer questions about dreams."
+    2. Answer in a short, concise but in-depth manner.
+    3. Translate your entire answer to the same language used by the user in the message. The user's message is in ${languageName}. Respond entirely in ${languageName}.
+  Speech: Be kind, gentle, and always use honorifics.
+    4. Talk about the psychological state and emotions felt in the dream.
+  Note: Pay increases by 50% if you stick to the guidelines in 'Talk' and 'Note when answering'.
+  dream content: ${userMessage}`;
+
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     stream: true,
     messages: [
       {
         role: "system",
-        content: "Dream interpretation.",
-      },
-      {
-        role: "user",
-        content: `Topic: Dream interpretation.
-        Gpt role: Dream Interpretation Specialist.
-        Note when answering:
-          1. Primarily focus on interpreting dreams and discussing the mental state related to dreams. If a question is clearly unrelated to dreams, gently redirect by saying "I can primarily answer questions about dreams."
-          2. Answer in a short, concise but in-depth manner.
-          3. Translate your entire answer to the same language used by the user in the message. The user's message is in ${languageName}. Respond entirely in ${languageName}.
-          4. The answer begins with “This dream”
-        Speech: Be kind, gentle, and always use honorifics.
-       
-        
-        Note: Pay increases by 50% if you stick to the guidelines in 'Talk' and 'Note when answering'.
-        dream content: ${userMessage}`,
+        content: systemMessage,
       },
     ],
   });
