@@ -4,5 +4,5 @@ Disallow: /api/
 
 Sitemap: https://www.dreaminterpretationai.com/sitemap.xml
 
-# 이전 도메인(www.dreaminterpretaion.com) 페이지 차단 (선택 사항)
+# 이전 도메인(www.dreaminterpretaion.com) 
 Disallow: /www.dreaminterpretaion.com/
