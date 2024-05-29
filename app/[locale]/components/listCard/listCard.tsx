@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Modal from "../modal/modal";
-import { Dream } from "@/app/types";
+import { Dream } from "@/app/[locale]/types";
 
 interface ListCardProps {
   dreams: Dream[];

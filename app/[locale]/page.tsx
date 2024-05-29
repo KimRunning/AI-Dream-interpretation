@@ -1,10 +1,19 @@
+// /app/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { useChat } from "ai/react";
 import { useRouter } from "next/navigation";
 import LoadingModal from "./components/loadingModal/loadingModal";
+import { useTranslation } from "./context/translationContext";
+import { LocaleTypes } from "@/utils/localization/settings";
 
-export default function Home() {
+interface HomeProps {
+  params: {
+    locale: LocaleTypes;
+  };
+}
+
+export default function Home({ params: { locale } }: HomeProps) {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -37,6 +46,8 @@ export default function Home() {
     }
   }, [messages, isLoading]);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <main className="h-[88vh] w-[100vw] flex flex-col overflow-hidden">
@@ -57,7 +68,7 @@ export default function Home() {
         </section>
         <section className="w-[100%] h-[45vh] mx-auto items-center flex flex-col justify-center">
           <form className="w-[80%] m-1 sm:w-[460px] flex flex-col items-center justify-center" onSubmit={onSubmitHandler}>
-            <span className="mb-1 w-[80vw] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">해몽 전문 AI가 분석해드려요!</span>
+            <span className="mb-1 w-[80vw] text-[17px] sm:w-[450px] sm:text-[20px] text-[#CBD0D9] font-semibold">{t("explanation")}</span>
             <div>
               <textarea
                 className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
@@ -67,7 +78,7 @@ export default function Home() {
               />
             </div>
             <button type="submit" className="opacity-100 z-50 bg-[#AC5EFA] text-white mt-3 w-[180px] h-[45px] rounded-md">
-              분석하기
+              {t("workBtn")}
             </button>
           </form>
         </section>

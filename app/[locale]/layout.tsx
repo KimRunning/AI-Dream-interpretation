@@ -1,8 +1,12 @@
+// /app/layout.tsx
 import "./globals.css";
 import Header from "./components/header/header";
 import Stars from "./components/stars/stars";
 import { SearchProvider } from "./context/SearchContext";
 import { Noto_Sans_KR } from "@next/font/google";
+import TranslationServerWrapper from "./components/translationServerWrapper/translationServerWrapper";
+import TranslationProvider from "./context/translationProvider";
+import { LocaleTypes } from "@/utils/localization/settings";
 
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"], weight: ["400"] });
 
@@ -20,13 +24,21 @@ export const metadata = {
   // twitter_image: "https://yourwebsite.com/twitter-image.jpg",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale: LocaleTypes;
+  };
+}
+
+export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   return (
     <html lang="ko" className="scrollbar-hide">
       <head>
         <link rel="icon" href="/HeamongIcon.png" sizes="32x32" type="image/png" />
         <link rel="icon" href="/HeamongIcon.png" sizes="16x16" type="image/png" />
-        <link rel="apple-touch-icon" href="/HeamongIcon.png" /> <meta name="description" content={metadata.description_ko} />
+        <link rel="apple-touch-icon" href="/HeamongIcon.png" />
+        <meta name="description" content={metadata.description_ko} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description_ko} />
         <meta name="keywords" content={metadata.keywords_ko} />
@@ -49,18 +61,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>{metadata.title_ko}</title>
       </head>
       <body className={notoSansKr.className}>
-        <SearchProvider>
-          <Header />
-          <div className={"notice"}>
-            <Stars />
-            {/* <div className="bg-white fixed left-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
-            {/* <div className="bg-white fixed right-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
-            {children}
-            {/* <div className="flex items-center justify-center">
-              <div className="fixed w-full h-[100px] bg-white sm:w-[500px] md:w-[700px] hide-on-small-height">광고배너</div>
-            </div> */}
-          </div>
-        </SearchProvider>
+        <TranslationServerWrapper locale={locale}>
+          {translations => (
+            <TranslationProvider translations={translations}>
+              <SearchProvider>
+                <Header />
+                <div className={"notice"}>
+                  <Stars />
+                  {/* <div className="bg-white fixed left-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
+                  {/* <div className="bg-white fixed right-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
+                  {children}
+                  {/* <div className="flex items-center justify-center">
+                    <div className="fixed w-full h-[100px] bg-white sm:w-[500px] md:w-[700px] hide-on-small-height">광고배너</div>
+                  </div> */}
+                </div>
+              </SearchProvider>
+            </TranslationProvider>
+          )}
+        </TranslationServerWrapper>
       </body>
     </html>
   );

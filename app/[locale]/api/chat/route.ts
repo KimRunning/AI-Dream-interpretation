@@ -22,7 +22,53 @@ const detectLanguage = (text: string): string => {
 };
 
 const isDreamRelated = (text: string): boolean => {
-  const dreamKeywords = ["dream", "sleep", "nightmare", "dreamt", "dreamed", "REM", "lucid", "꿈", "수면", "악몽", "꿈꿨어", "REM", "루시드", "해몽"];
+  const dreamKeywords = [
+    "dream",
+    "sleep",
+    "nightmare",
+    "dreamt",
+    "dreamed",
+    "REM",
+    "lucid", // English
+    "꿈",
+    "수면",
+    "악몽",
+    "꿈꿨어",
+    "루시드",
+    "해몽",
+    "꿨어",
+    "자각몽",
+    "꾸었어", // Korean
+    "traum",
+    "schlaf",
+    "albtraum",
+    "geträumt",
+    "traumte",
+    "REM",
+    "klartraum", // German
+    "rêve",
+    "sommeil",
+    "cauchemar",
+    "rêvé",
+    "rêvait",
+    "REM",
+    "lucide", // French
+    "mimpi",
+    "tidur",
+    "mimpi buruk",
+    "bermimpi",
+    "bermimpikan",
+    "REM",
+    "jelas", // Indonesian
+    "夢",
+    "睡眠",
+    "悪夢",
+    "夢見た",
+    "夢を見た",
+    "レム睡眠",
+    "明晰夢",
+    "ゆめ", // Japanese
+  ];
   return dreamKeywords.some(keyword => text.toLowerCase().includes(keyword));
 };
 
@@ -37,6 +83,9 @@ export async function POST(req: Request) {
     eng: "English",
     kor: "Korean",
     jpn: "Japanese",
+    deu: "German",
+    fra: "French",
+    ind: "Indonesian",
   };
 
   const languageName = languageMap[detectedLanguage] || "English";

@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import moonIcon from "../../../public/Icon/해몽Icon.png";
-
+import moonIcon from "../../../../public/Icon/해몽Icon.png";
 interface LoadingModalProps {
   isOpen: boolean;
   onClose: () => void;
