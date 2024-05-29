@@ -12,9 +12,13 @@ const TranslationServerWrapper = async ({ locale, children }: TranslationServerW
   const { t } = await createTranslation(locale, "common");
   const translations = {
     homeTitle1: t("homeTitle1"),
+    homeTitle11: t("homeTitle11"),
     homeTitle2: t("homeTitle2"),
+    homeTitle21: t("homeTitle21"),
     homeTitle3: t("homeTitle3"),
+    homeTitle31: t("homeTitle31"),
     explanation: t("explanation"),
+    placehold: t("placehold"),
     workBtn: t("workBtn"),
     // 필요한 번역 키들을 추가하세요
   };
