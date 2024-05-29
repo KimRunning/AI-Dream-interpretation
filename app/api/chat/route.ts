@@ -44,6 +44,10 @@ const isDreamRelated = (text: string): boolean => {
     "albtraum",
     "geträumt",
     "traumte",
+    "ich hatte einen Traum",
+    "Traum",
+    "Träumen",
+    "Deutung",
     "REM",
     "klartraum", // German
     "rêve",
@@ -74,7 +78,6 @@ const isDreamRelated = (text: string): boolean => {
 
 export async function POST(req: Request) {
   const { messages }: { messages: Message[] } = await req.json();
-  console.log("User question:", messages);
 
   const userMessage = messages[0].content;
   const detectedLanguage = detectLanguage(userMessage);

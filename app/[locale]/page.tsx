@@ -57,13 +57,16 @@ export default function Home({ params: { locale } }: HomeProps) {
           }`}
         >
           <div className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
-            &nbsp; 꿈<span className="text-[20px] sm:text-[30px]">을 통해</span>
+            &nbsp; {t("homeTitle1")}
+            <span className="text-[20px] sm:text-[30px]">{t("homeTitle11")}</span>
           </div>
           <div className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
-            &nbsp; 알<span className="text-[20px] sm:text-[30px]">아보는</span>
+            &nbsp; {t("homeTitle2")}
+            <span className="text-[20px] sm:text-[30px]">{t("homeTitle21")}</span>
           </div>
           <span className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
-            &nbsp; 무<span className="text-[20px] sm:text-[30px]">의식</span>
+            &nbsp; {t("homeTitle3")}
+            <span className="text-[20px] sm:text-[30px]">{t("homeTitle31")}</span>
           </span>
         </section>
         <section className="w-[100%] h-[45vh] mx-auto items-center flex flex-col justify-center">
@@ -73,7 +76,7 @@ export default function Home({ params: { locale } }: HomeProps) {
               <textarea
                 className="text-gray-500 rounded font-bold resize-none w-[80vw] h-[180px] sm:w-[450px] sm:h-[220px] bg-white bg-opacity-90"
                 value={input}
-                placeholder="당신이 꾼 꿈을 들려주세요..!"
+                placeholder={t("placehold")}
                 onChange={handleInputChange}
               />
             </div>
