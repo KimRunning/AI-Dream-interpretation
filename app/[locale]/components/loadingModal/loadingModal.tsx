@@ -19,7 +19,7 @@ const LoadingModal: React.FC<LoadingModalProps> = ({ isOpen, onClose }) => {
           "꿈은 무의식적인 욕망과 감정이 수면 중에 억압에서 풀려나와 표출되는 과정이며 꿈의 해석은 심리적 이해와 치료를 돕는 수단이다"
           <br />
           <br />
-          <p className="text-2xl text-semibold">- 프로이트 -</p>
+          <span className="text-2xl text-semibold">- 프로이트 -</span>
         </p>
       </div>
     </div>
