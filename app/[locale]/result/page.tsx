@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ResultCard from "../components/resultCard/resultCard";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTranslation } from "../context/translationContext";
+import { MultyLang } from "../types";
 
 interface Dream {
   id: string;
@@ -12,9 +14,10 @@ interface Dream {
   role: string;
 }
 
-export default function Result() {
+export default function Result({ params: { locale } }: MultyLang) {
   const [isLoading, setIsLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let dreamData: string | null = sessionStorage.getItem("messages");
@@ -29,7 +32,7 @@ export default function Result() {
 
     if (dreamData === null) {
       console.error("dreamData is null");
-      toast("데이터가 존재하지 않습니다");
+      toast(t("ToastDataNull"));
       setIsLoading(false);
       return;
     }
@@ -59,16 +62,16 @@ export default function Result() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("카드 저장 완료:", data);
-        toast("카드가 저장 되었습니다");
+        toast(t("ToastSuccess"));
+        console.log(data);
       } else {
         const error = await response.json();
-        console.error("카드 저장 중 오류 발생:", error);
+        console.error(t("ToastFail"), error);
         toast(error.message);
       }
     } catch (error) {
       console.error("Error parsing dreamData or mapping:", error);
-      toast("데이터 처리 중 오류 발생");
+      toast(t("ToastMappingError"));
     } finally {
       setIsLoading(false);
     }
@@ -89,19 +92,19 @@ export default function Result() {
                 }`}
                 disabled={isButtonDisabled}
               >
-                저장 / 게시
+                {t("resultBtn1")}
               </button>
               <Link
-                href={"/community"}
+                href={`/${locale}/community`}
                 className="z-50 bg-[#E17F38] flex items-center justify-center w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold"
               >
-                게시판 가기
+                {t("resultBtn2")}
               </Link>
               <Link
-                href={"/"}
+                href={`/${locale}`}
                 className="z-50 bg-[#D34A52] flex items-center justify-center w-[100px] h-[28px] sm:w-[130px] sm:h-[35px] rounded mt-[15px] border-[1px] border-white font-semibold"
               >
-                HOME
+                {t("resultBtn3")}
               </Link>
             </div>
           </div>

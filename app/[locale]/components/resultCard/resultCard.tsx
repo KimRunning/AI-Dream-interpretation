@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import RandomImage from "../randomImage/randomImage";
+import { useTranslation } from "../../context/translationContext";
 
 interface Message {
   content: string;
@@ -12,6 +13,7 @@ interface Message {
 export default function ResultCard() {
   const [onQuestion, setOnQuestion] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const data = sessionStorage.getItem("messages");
@@ -41,8 +43,8 @@ export default function ResultCard() {
         style={{ zIndex: 50 }}
       >
         <div className="w-[290px] font-bold sm:w-[420px] flex flex-row justify-between text-[15px] sm:text-[18px] text-white mt-1">
-          <button onClick={toggleQuestion}>{onQuestion ? "◁ 질문" : ""}</button>
-          <button onClick={toggleQuestion}>{onQuestion ? "" : "답변 ▷"}</button>
+          <button onClick={toggleQuestion}>{onQuestion ? `${t("CardQuestion")}▷` : ""}</button>
+          <button onClick={toggleQuestion}>{onQuestion ? "" : `${t("CardAnswer")}▷`}</button>
         </div>
         <RandomImage />
         <div className="w-[270px] h-[180px] sm:w-[380px] sm:h-[245px] text-white overflow-y-scroll scrollbar-hide">

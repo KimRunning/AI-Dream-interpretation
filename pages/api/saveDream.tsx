@@ -17,7 +17,7 @@ export default async function saveDream(req: NextApiRequest, res: NextApiRespons
       const idToCheck = dream[0]?.id; // dream 배열의 첫 번째 요소의 id
       const existingDream = await collection.findOne({ dream: { $elemMatch: { id: idToCheck } } });
       if (existingDream) {
-        return res.status(409).json({ message: "이미 저장된 카드입니다..!" });
+        return res.status(409).json({ message: "This card is already saved" });
       }
 
       const result = await collection.insertOne({ dream });

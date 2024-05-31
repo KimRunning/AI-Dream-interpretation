@@ -65,7 +65,11 @@ export default async function RootLayout({ children, params: { locale } }: RootL
           {translations => (
             <TranslationProvider translations={translations}>
               <SearchProvider>
-                <Header />
+                <Header
+                  params={{
+                    locale: locale,
+                  }}
+                />
                 <div className={"notice"}>
                   <Stars />
                   {/* <div className="bg-white fixed left-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}

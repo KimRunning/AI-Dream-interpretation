@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const images = [
+const images: string[] = [
   "/DreamImage/강아지.png",
   "/DreamImage/모험가.png",
   "/DreamImage/시바견.png",
@@ -13,11 +13,20 @@ const images = [
   "/DreamImage/해몽이미지.png",
 ];
 
-export default function RandomImage() {
+const preloadImages = (srcArray: string[]): void => {
+  srcArray.forEach(src => {
+    const img: HTMLImageElement = new window.Image();
+    img.src = src;
+  });
+};
+
+export default function RandomImage(): JSX.Element {
   const [randomImage, setRandomImage] = useState<string>(images[0]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    preloadImages(images); // 사전 로드
+
     const randomIndex = Math.floor(Math.random() * images.length);
     setRandomImage(images[randomIndex]);
     setIsLoading(false);
@@ -37,6 +46,7 @@ export default function RandomImage() {
         objectFit="cover"
         onLoadingComplete={() => setIsLoading(false)}
         className={`transition-opacity duration-500 ${isLoading ? "opacity-0" : "opacity-100"}`}
+        priority
       />
     </div>
   );

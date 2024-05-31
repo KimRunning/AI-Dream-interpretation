@@ -3,12 +3,14 @@ import React, { useEffect, useMemo, useState, useCallback, useRef, FormEvent } f
 import ListCard from "../components/listCard/listCard";
 import { useSearch } from "../context/SearchContext";
 import throttle from "lodash/throttle";
+import { useTranslation } from "../context/translationContext";
 
 export default function Community() {
   const { searchQuery, setSearchQuery, fetchDreams, dreams, nextCursor, setDreams, setNextCursor } = useSearch();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const fetchInitialDreams = useCallback(async () => {
     setIsLoading(true);
@@ -88,7 +90,7 @@ export default function Community() {
   return (
     <main className="w-full h-[88vh] flex flex-col items-center overflow-hidden relative">
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2 cursor-pointer" onClick={fetchInitialDreams}>
-        Dreams
+        {t("communityTitle")}
       </span>
       <section className="w-[95%] h-[75%] flex flex-col items-center justify-center">
         <div className="w-full h-full flex justify-center items-center">
@@ -103,7 +105,7 @@ export default function Community() {
                 type="text"
                 value={searchQuery}
                 onChange={handleInputChange}
-                placeholder="질문 또는 답변의 내용을 입력해 주세요..!"
+                placeholder={t("searchText")}
                 className="w-[360px] h-[40px] font-bold border-3 border-[#B3B8DF] rounded-md pl-2 pr-10"
               />
               <button

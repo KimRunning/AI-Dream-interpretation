@@ -1,5 +1,6 @@
 "use client";
 import { useState, FormEvent } from "react";
+import { useTranslation } from "../../context/translationContext";
 
 const HomePage: React.FC = () => {
   const [subject, setSubject] = useState("");
@@ -7,6 +8,7 @@ const HomePage: React.FC = () => {
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const { t } = useTranslation();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -49,13 +51,12 @@ const HomePage: React.FC = () => {
         </div>
       )}
       <section className="w-[300px] h-[500px] bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-lg font-bold text-center mb-4">Send Email</h1>
+        <h1 className="text-lg font-bold text-center mb-4">{t("inquireTitle")}</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
             defaultValue="minsuk7316@naver.com"
             readOnly
-            placeholder="받을 사람"
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
@@ -63,19 +64,19 @@ const HomePage: React.FC = () => {
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder="Name or Title"
+            placeholder={t("nameInput")}
             required
             className="p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
           <textarea
             value={message}
             onChange={e => setMessage(e.target.value)}
-            placeholder="Message"
+            placeholder={t("message")}
             required
             className="p-2 border border-gray-300 rounded h-32 resize-none focus:outline-none focus:border-blue-500"
           />
           <button type="submit" className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Send Email
+            {t("sendBtn")}
           </button>
         </form>
         <p className={`text-center mt-4 text-sm ${isSuccess === true ? "text-green-500" : isSuccess === false ? "text-red-500" : ""}`}>{status}</p>

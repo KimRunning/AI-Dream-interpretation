@@ -23,6 +23,14 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/sendEmail.js", "pages/api/testdb.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "pages/api/sendEmail.js",
+    "pages/api/testdb.js",
+    "app/[locale]/components/slideMenu"
+  ],
   "exclude": ["node_modules"]
 }

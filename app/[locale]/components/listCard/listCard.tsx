@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Modal from "../modal/modal";
 import { Dream } from "@/app/[locale]/types";
+import { useTranslation } from "../../context/translationContext";
 
 interface ListCardProps {
   dreams: Dream[];
@@ -10,6 +11,7 @@ interface ListCardProps {
 const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [activeModalId, setActiveModalId] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const handleOpenModal = (id: string) => {
     setActiveModalId(id);
@@ -38,7 +40,7 @@ const ListCard: React.FC<ListCardProps> = ({ dreams }) => {
         >
           <section className="w-[100%] h-[75%] flex justify-center m-auto">
             {dream.dream && dream.dream.length > 0 ? (
-              <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold">{truncateText(dream.dream[0].content, 15)}</div>
+              <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold">{truncateText(dream.dream[0].content, 12)}</div>
             ) : (
               <div className="m-auto text-[#F8E7E7] text-[20px] sm:text-[22px] whitespace-normal font-semibold">No content available</div>
             )}

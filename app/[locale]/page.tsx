@@ -1,23 +1,17 @@
-// /app/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { useChat } from "ai/react";
 import { useRouter } from "next/navigation";
 import LoadingModal from "./components/loadingModal/loadingModal";
 import { useTranslation } from "./context/translationContext";
-import { LocaleTypes } from "@/utils/localization/settings";
+import { MultyLang } from "./types";
 
-interface HomeProps {
-  params: {
-    locale: LocaleTypes;
-  };
-}
-
-export default function Home({ params: { locale } }: HomeProps) {
+export default function Home({ params: { locale } }: MultyLang) {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [hideSection, setHideSection] = useState(false);
+  const { t } = useTranslation();
 
   const onSubmitHandler = (event: any) => {
     event.preventDefault();
@@ -42,29 +36,27 @@ export default function Home({ params: { locale } }: HomeProps) {
 
     if (!isLoading && messages.length > 0) {
       sessionStorage.setItem("messages", JSON.stringify(messages));
-      router.push("/result");
+      router.push(`/${locale}/result`);
     }
   }, [messages, isLoading]);
-
-  const { t } = useTranslation();
 
   return (
     <>
       <main className="h-[88vh] w-[100vw] flex flex-col overflow-hidden">
         <section
-          className={`flex flex-col justify-around items-center w-[200px] h-[160px] mt-5 mb-7 text-[30px] pl-[40px] sm:h-[230px] sm:pl-[0px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto ${
+          className={`flex flex-col justify-around items-center w-[300px] h-[160px] mt-10 mb-7 text-[30px] pl-[140px] sm:mt-5 sm:h-[230px] sm:pl-[64px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto ${
             hideSection ? "invisible" : ""
           }`}
         >
-          <div className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
+          <div className="w-[250px] h-[25px] sm:w-[250px] sm:h-[40px]">
             &nbsp; {t("homeTitle1")}
             <span className="text-[20px] sm:text-[30px]">{t("homeTitle11")}</span>
           </div>
-          <div className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
+          <div className="w-[250px] h-[25px] sm:w-[250px] sm:h-[40px]">
             &nbsp; {t("homeTitle2")}
             <span className="text-[20px] sm:text-[30px]">{t("homeTitle21")}</span>
           </div>
-          <span className="w-[150px] h-[25px] sm:w-[194px] sm:h-[40px]">
+          <span className="w-[250px] h-[25px] sm:w-[250px] sm:h-[40px]">
             &nbsp; {t("homeTitle3")}
             <span className="text-[20px] sm:text-[30px]">{t("homeTitle31")}</span>
           </span>
