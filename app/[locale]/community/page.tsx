@@ -4,8 +4,14 @@ import ListCard from "../components/listCard/listCard";
 import { useSearch } from "../context/SearchContext";
 import throttle from "lodash/throttle";
 import { useTranslation } from "../context/translationContext";
+import Head from "next/head";
+import { LocaleTypes } from "@/utils/localization/settings";
 
-export default function Community() {
+interface CommunityProps {
+  locale: LocaleTypes;
+}
+
+export default function Community({ locale }: CommunityProps) {
   const { searchQuery, setSearchQuery, fetchDreams, dreams, nextCursor, setDreams, setNextCursor } = useSearch();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -87,8 +93,68 @@ export default function Community() {
     return <ListCard dreams={dreams} />;
   }, [dreams]);
 
+  const getMetaTags = (locale: LocaleTypes) => {
+    const meta = {
+      ko: {
+        title: "꿈 해몽 - 꿈을 통해 알아보는 무의식",
+        description: "AI가 제공하는 꿈 해몽 서비스. 당신의 꿈을 분석하고 해석하여 무의식의 메시지를 알아보세요.",
+        keywords: "꿈 해몽, 꿈 분석, AI 꿈 해몽, 꿈 해석, 무의식, 꿈 풀이",
+      },
+      en: {
+        title: "Dream Interpretation - AI-based Dream Analysis Service",
+        description: "AI-powered dream interpretation service. Analyze and understand the messages of your subconscious through your dreams.",
+        keywords: "dream interpretation, dream analysis, AI dream interpretation, dream decoding, subconscious, dream meaning",
+      },
+      in: {
+        title: "Interpretasi Mimpi - Layanan Analisis Mimpi Berbasis AI",
+        description: "Layanan interpretasi mimpi yang didukung oleh AI. Analisis dan pahami pesan dari alam bawah sadar Anda melalui mimpi Anda.",
+        keywords: "interpretasi mimpi, analisis mimpi, interpretasi mimpi AI, dekode mimpi, bawah sadar, arti mimpi",
+      },
+      de: {
+        title: "Traumdeutung - KI-basierter Traumanalyse-Service",
+        description: "KI-gestützter Traumdeutungsdienst. Analysieren und verstehen Sie die Botschaften Ihres Unterbewusstseins durch Ihre Träume.",
+        keywords: "Traumdeutung, Traumanalyse, KI-Traumdeutung, Traumdeutung, Unterbewusstsein, Traumdeutung",
+      },
+      ja: {
+        title: "夢の解釈 - AIベースの夢分析サービス",
+        description: "AIが提供する夢の解釈サービス。あなたの夢を分析し、潜在意識のメッセージを理解しましょう。",
+        keywords: "夢の解釈, 夢の分析, AI夢の解釈, 夢の解読, 潜在意識, 夢の意味",
+      },
+      fr: {
+        title: "Interprétation des rêves - Service d'analyse des rêves basé sur l'IA",
+        description: "Service d'interprétation des rêves alimenté par l'IA. Analysez et comprenez les messages de votre subconscient à travers vos rêves.",
+        keywords: "interprétation des rêves, analyse des rêves, interprétation des rêves par l'IA, décryptage des rêves, subconscient, signification des rêves",
+      },
+    };
+
+    return meta[locale] || meta.ko;
+  };
+
+  const metaTags = getMetaTags(locale);
+
   return (
     <main className="w-full h-[88vh] flex flex-col items-center overflow-hidden relative">
+      <Head>
+        <title>{metaTags.title}</title>
+        <meta name="description" content={metaTags.description} />
+        <meta name="keywords" content={metaTags.keywords} />
+        <meta name="author" content="Bold Turtle" />
+        <meta property="og:title" content={metaTags.title} />
+        <meta property="og:description" content={metaTags.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.dreaminterpretationai.com/community" />
+        <meta property="og:site_name" content="Bold Turtle" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTags.title} />
+        <meta name="twitter:description" content={metaTags.description} />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/en/community" hrefLang="en" />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/ko/community" hrefLang="ko" />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/ja/community" hrefLang="ja" />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/de/community" hrefLang="de" />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/in/community" hrefLang="in" />
+        <link rel="alternate" href="https://www.dreaminterpretationai.com/fr/community" hrefLang="fr" />
+        <link rel="canonical" href="https://www.dreaminterpretationai.com/community" />
+      </Head>
       <span className="text-[50px] text-[#F8E7E7] font-bold mb-4 mt-2 cursor-pointer" onClick={fetchInitialDreams}>
         {t("communityTitle")}
       </span>
