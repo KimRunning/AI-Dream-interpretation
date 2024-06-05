@@ -11,7 +11,7 @@ import { LocaleTypes } from "@/utils/localization/settings";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
-  title_ko: "꿈 해몽 - AI 기반 꿈 분석 서비스",
+  title_ko: "꿈 해몽 - 꿈을 통해 알아보는 무의식",
   description_ko: "AI가 제공하는 꿈 해몽 서비스. 당신의 꿈을 분석하고 해석하여 무의식의 메시지를 알아보세요.",
   keywords_ko: "꿈 해몽, 꿈 분석, AI 꿈 해몽, 꿈 해석, 무의식, 꿈 풀이",
   title_en: "Dream Interpretation - AI-based Dream Analysis Service",
