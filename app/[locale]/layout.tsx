@@ -37,6 +37,8 @@ export default async function RootLayout({ children, params: { locale } }: RootL
       <head>
         <link rel="icon" href="/HeamongIcon.png" sizes="32x32" type="image/png" />
         <link rel="icon" href="/HeamongIcon.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/HeamongIcon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/HeamongIcon.png" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/HeamongIcon.png" />
         <meta name="description" content={metadata.description_ko} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
