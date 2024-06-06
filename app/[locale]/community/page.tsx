@@ -7,11 +7,14 @@ import { useTranslation } from "../context/translationContext";
 import Head from "next/head";
 import { LocaleTypes } from "@/utils/localization/settings";
 
+// Community 컴포넌트의 Props 인터페이스 정의
 interface CommunityProps {
-  locale: LocaleTypes;
+  params: {
+    locale: LocaleTypes;
+  };
 }
 
-export default function Community({ locale }: CommunityProps) {
+export default function Community({ params: { locale } }: CommunityProps) {
   const { searchQuery, setSearchQuery, fetchDreams, dreams, nextCursor, setDreams, setNextCursor } = useSearch();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -127,7 +130,7 @@ export default function Community({ locale }: CommunityProps) {
       },
     };
 
-    return meta[locale] || meta.ko;
+    return meta[locale] || meta.en;
   };
 
   const metaTags = getMetaTags(locale);
