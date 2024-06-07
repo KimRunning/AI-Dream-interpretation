@@ -56,12 +56,12 @@ export default function Header({ params: { locale } }: MultyLang) {
           <Link href={`/${locale}/inquire`} passHref>
             <span className="font-bold 2xl:text-[24px] xl:text-[20px] text-[#D5C6ED] cursor-pointer">{t("headerLinkB3")}</span>
           </Link>
-          <div className="relative z-[60]" ref={dropdownRef}>
+          <div className="relative" ref={dropdownRef}>
             <button className="font-bold 2xl:text-[24px] xl:text-[20px] text-[#D5C6ED] cursor-pointer" onClick={toggleDropdown}>
               {t("headerLinkB1")}
             </button>
             {dropdownOpen && (
-              <div className="absolute mt-2 w-48 bg-white shadow-lg">
+              <div className="absolute mt-2 w-56 bg-white shadow-lg z-[1]">
                 <Link href={`/en`} passHref>
                   <span className="block px-4 py-2 text-sm text-black cursor-pointer">English</span>
                 </Link>
@@ -85,8 +85,8 @@ export default function Header({ params: { locale } }: MultyLang) {
           </div>
         </div>
         <div className="flex justify-end sm:hidden w-full">
-          <button onClick={toggleMenu} className="bg-black h-[100%] mt-auto text-white">
-            <FiMenu size={45} />
+          <button onClick={toggleMenu} className="bg-black h-[100%] mt-auto text-white pr-1">
+            <FiMenu size={36} />
           </button>
         </div>
       </section>

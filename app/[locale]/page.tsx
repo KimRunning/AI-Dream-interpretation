@@ -44,7 +44,7 @@ export default function Home({ params: { locale } }: MultyLang) {
     <>
       <main className="h-[88vh] w-[100vw] flex flex-col overflow-hidden">
         <section
-          className={`flex flex-col justify-around items-center w-[300px] h-[160px] mt-10 mb-7 text-[30px] pl-[140px] sm:mt-5 sm:h-[230px] sm:pl-[64px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto ${
+          className={`flex flex-col justify-around items-center w-[300px] h-[160px] mt-10 mb-7 text-[30px] pl-[140px] sm:mt-20 sm:h-[230px] sm:pl-[64px] sm:text-[46px] text-[#F8E7E7] font-bold mx-auto ${
             hideSection ? "invisible" : ""
           }`}
         >
