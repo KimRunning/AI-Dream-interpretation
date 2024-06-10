@@ -1,4 +1,3 @@
-// /app/layout.tsx
 import "./globals.css";
 import Header from "./components/header/header";
 import Stars from "./components/stars/stars";
@@ -29,7 +28,7 @@ export const metadata = {
   title_fr: "Interprétation des rêves - Service d'analyse des rêves basé sur l'IA",
   description_fr: "Service d'interprétation des rêves alimenté par l'IA. Analysez et comprenez les messages de votre subconscient à travers vos rêves.",
   keywords_fr: "interprétation des rêves, analyse des rêves, interprétation des rêves par l'IA, décryptage des rêves, subconscient, signification des rêves",
-  author: "Turtle Step ",
+  author: "Turtle Step",
   og_site_name: "Dream Interpretation AI",
   twitter_card: "summary_large_image",
 };
@@ -61,16 +60,14 @@ export default async function RootLayout({ children, params: { locale } }: RootL
         <meta property="og:description" content={metadata.description_ko} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.dreaminterpretaion.com" />
-        {/* <meta property="og:image" content={metadata.og_image} /> */}
         <meta property="og:site_name" content={metadata.og_site_name} />
 
         <meta name="twitter:card" content={metadata.twitter_card} />
         <meta name="twitter:title" content={metadata.title_ko} />
         <meta name="twitter:description" content={metadata.description_ko} />
-        {/* <meta name="twitter:image" content={metadata.twitter_image} /> */}
 
         <meta name="naver-site-verification" content="5b62779f512f001e2879a440d11ee8932c9ee9af" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1780043475074752" crossOrigin="anonymous"></script>
+
         <link rel="alternate" href="https://www.dreaminterpretaion.com/en" hrefLang="en" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ko" hrefLang="ko" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ja" hrefLang="ja" />
@@ -81,7 +78,8 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 
         <title>{metadata.title_ko}</title>
 
-        {/* Country-specific SEO tags */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1780043475074752" crossOrigin="anonymous"></script>
+
         {locale === "ko" && (
           <>
             <meta name="description" content={metadata.description_ko} />
@@ -149,19 +147,10 @@ export default async function RootLayout({ children, params: { locale } }: RootL
           {translations => (
             <TranslationProvider translations={translations}>
               <SearchProvider>
-                <Header
-                  params={{
-                    locale: locale,
-                  }}
-                />
+                <Header params={{ locale: locale }} />
                 <div className={"notice"}>
                   <Stars />
-                  {/* <div className="bg-white fixed left-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
-                  {/* <div className="bg-white fixed right-2 top-[110px] z-10 w-[9%] h-[600px] hidden sm:inline">광고 사이드 배너</div> */}
                   {children}
-                  {/* <div className="flex items-center justify-center">
-                    <div className="fixed w-full h-[100px] bg-white sm:w-[500px] md:w-[700px] hide-on-small-height">광고배너</div>
-                  </div> */}
                 </div>
               </SearchProvider>
             </TranslationProvider>
