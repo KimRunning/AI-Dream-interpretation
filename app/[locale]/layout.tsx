@@ -29,8 +29,8 @@ export const metadata = {
   title_fr: "Interprétation des rêves - Service d'analyse des rêves basé sur l'IA",
   description_fr: "Service d'interprétation des rêves alimenté par l'IA. Analysez et comprenez les messages de votre subconscient à travers vos rêves.",
   keywords_fr: "interprétation des rêves, analyse des rêves, interprétation des rêves par l'IA, décryptage des rêves, subconscient, signification des rêves",
-  author: "Bold Turtle",
-  og_site_name: "Bold Turtle",
+  author: "Turtle Step ",
+  og_site_name: "Dream Interpretation AI",
   twitter_card: "summary_large_image",
 };
 
@@ -70,7 +70,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
         {/* <meta name="twitter:image" content={metadata.twitter_image} /> */}
 
         <meta name="naver-site-verification" content="5b62779f512f001e2879a440d11ee8932c9ee9af" />
-
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1780043475074752" crossOrigin="anonymous"></script>
         <link rel="alternate" href="https://www.dreaminterpretaion.com/en" hrefLang="en" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ko" hrefLang="ko" />
         <link rel="alternate" href="https://www.dreaminterpretaion.com/ja" hrefLang="ja" />

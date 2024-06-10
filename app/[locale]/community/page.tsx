@@ -141,12 +141,12 @@ export default function Community({ params: { locale } }: CommunityProps) {
         <title>{metaTags.title}</title>
         <meta name="description" content={metaTags.description} />
         <meta name="keywords" content={metaTags.keywords} />
-        <meta name="author" content="Bold Turtle" />
+        <meta name="author" content="Turtle Step" />
         <meta property="og:title" content={metaTags.title} />
         <meta property="og:description" content={metaTags.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.dreaminterpretationai.com/community" />
-        <meta property="og:site_name" content="Bold Turtle" />
+        <meta property="og:site_name" content="Dream Interpretation AI" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metaTags.title} />
         <meta name="twitter:description" content={metaTags.description} />
